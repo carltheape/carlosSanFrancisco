@@ -1,8 +1,18 @@
 .jumbotron {
 	color: white;
+	text-align: center;
 }
 
 #map{
   height: 100%;
   margin: 0;
+}
+
+.timer {
+	text-align: center;
+}
+
+.btn {
+	margin-left: 1.4%;
+	margin-right: 1.4%;
 }
