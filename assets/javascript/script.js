@@ -1,14 +1,14 @@
-console.log("testing123");
+$(document).ready(function(){
+	var key = "2c96c0998c85115fd50f75c5ca2aa4cc";
+	var format = "&tags=dog&format=json&nojsoncallback=1&api_sig=198a22bfaba25646e4feae09633a0685";
+	var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + key + format;
 
-var config = {
-      apiKey: "AIzaSyAqIkP9gKhU7raMzCLqpCqh3Z2PZYM7LcA",
-      
-    };
-
-var mapOptions = {
-    center: new google.maps.LatLng(37.7831,-122.4039),
-    zoom: 12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
-
-new google.maps.Map(document.getElementById('map'), mapOptions);
+	$.ajax({
+		url: queryUrl,
+		method: "GET"
+	})
+	.done(function(response){
+		var results = response.data;
+		console.log(response);
+	})
+})
