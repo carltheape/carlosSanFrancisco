@@ -14,9 +14,26 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+   integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+   crossorigin=""/>
+
+
+
+
+                   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+   integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+   crossorigin=""></script>
+
+
+
+
+   <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-		<script type="text/javascript" src="assets/javascript/script.js"></script>
+
 	</head>
 	<body>
 
@@ -29,10 +46,20 @@
         </div>
     
       
-      <div class="jumbotron map">
-        <h1>Big ole Map</h1>
+<!--       <div class="jumbotron map"> -->
+<!--         <h1>Big ole Map</h1> -->
+
+         <div id='mapid'></div>
+         <div id='mymap'></div>
+<!-- <script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybHRoZWFwZSIsImEiOiJjajN6NGMybTQwMDB2MzJuMWdzZm12b3QwIn0.PP7mPZA5HjlHME4HiUQEPg';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/satellite-v9'
+});
+</script> -->
         
-      </div>
+<!--       </div> -->
 
       <div class="row container-fluid">
           <div class="col-md-8 left rounded"><h3>Clues</h3>
@@ -50,10 +77,11 @@
     </div> <!-- /container -->
 
    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqIkP9gKhU7raMzCLqpCqh3Z2PZYM7LcA&callback=initMap"
-    type="text/javascript"></script>
+<!--     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqIkP9gKhU7raMzCLqpCqh3Z2PZYM7LcA&callback=initMap"
+    type="text/javascript"></script> -->
+        <script type="text/javascript" src="assets/javascript/script.js"></script>
 
-    
+
 
 	</body>
 </html>
