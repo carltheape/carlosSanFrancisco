@@ -35,4 +35,37 @@ h3 {
 	margin-top: 10px;
 }
 
-#mapid { height: 400px; }
+#mapid { 
+	height: 400px;
+	width: 100%; 
+}
+
+/*.marker{
+	color: transparent;
+
+}*/
+
+.marker:hover { 
+    color: yellow;
+    z-index: 100;
+    width:200px;
+	height: 200px;
+    white-space: nowrap;
+    text-align: center;
+    text-shadow: 1px 1px black;
+
+
+
+}
+
+
+
+h5 {position: relative;
+	bottom: 10px;
+	text-align: center;
+	display: none;
+	z-index: 100;
+
+
+}
+.marker:hover h5{display: inline;}
