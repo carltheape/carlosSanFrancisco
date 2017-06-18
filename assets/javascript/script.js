@@ -1,14 +1,36 @@
-console.log("testing123");
-
-var config = {
-      apiKey: "AIzaSyAqIkP9gKhU7raMzCLqpCqh3Z2PZYM7LcA",
-      
-    };
-
-var mapOptions = {
-    center: new google.maps.LatLng(37.7831,-122.4039),
-    zoom: 12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
-
-new google.maps.Map(document.getElementById('map'), mapOptions);
+$(function(){
+	
+	var note = $('#note'),
+		ts = new Date(2012, 0, 1),
+		newYear = true;
+	
+	if((new Date()) > ts){
+		// The new year is here! Count towards something else.
+		// Notice the *1000 at the end - time must be in milliseconds
+		ts = (new Date()).getTime() + 7*24*60*60*1000;
+		newYear = false;
+	}
+		
+	$('#timer').countdown({
+		timestamp	: ts,
+		callback	: function(days, hours, minutes, seconds){
+			
+			var message = "";
+			
+			message += days + " day" + ( days==1 ? '':'s' ) + ", ";
+			message += hours + " hour" + ( hours==1 ? '':'s' ) + ", ";
+			message += minutes + " minute" + ( minutes==1 ? '':'s' ) + " and ";
+			message += seconds + " second" + ( seconds==1 ? '':'s' ) + " <br />";
+			
+			if(newYear){
+				message += "left until the new year!";
+			}
+			else {
+				message += "left to catch the burglar!";
+			}
+			
+			note.html(message);
+		}
+	});
+	
+});
