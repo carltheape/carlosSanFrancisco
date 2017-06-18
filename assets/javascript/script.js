@@ -251,14 +251,14 @@ console.log(daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (
         // These options control the ending camera position: centered at
         // the target, at zoom level 9, and north up.
         center: target,
-        zoom:0.2,
+        zoom:0.02,
         bearing: 0,
 
         // These options control the flight curve, making it move
         // slowly and zoom out almost completely before starting
         // to pan.
-        speed: 0.2, // make the flying slow
-        curve: 2, // change the speed at which it zooms out
+        speed: 0.1, // make the flying slow
+        curve: 1, // change the speed at which it zooms out
 
          // This can be any easing function: it takes a number between
         // 0 and 1 and returns another number between 0 and 1.
@@ -281,6 +281,125 @@ $('.' + startingCity.replace(/\s/g, '')).css('background-image', 'url(assets/ima
 
   // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
     $(".marker").css('cursor', 'pointer');
+
+$(function(){
+    
+    var note = $('#note'),
+        ts = new Date(2012, 0, 1),
+        newYear = true;
+    
+    if((new Date()) > ts){
+        // The new year is here! Count towards something else.
+        // Notice the *1000 at the end - time must be in milliseconds
+        ts = (new Date()).getTime() + 7*24*60*60*1000;
+        newYear = false;
+    }
+        
+    $('#timer').countdown({
+        timestamp    : ts,
+        callback    : function(days, hours, minutes, seconds){
+            
+            var message = "";
+            
+            message += days + " day" + ( days==1 ? '':'s' ) + ", ";
+            message += hours + " hour" + ( hours==1 ? '':'s' ) + ", ";
+            message += minutes + " minute" + ( minutes==1 ? '':'s' ) + " and ";
+            message += seconds + " second" + ( seconds==1 ? '':'s' ) + " <br />";
+            
+            if(newYear){
+                message += "left until the new year!";
+            }
+            else {
+                message += "left to catch the burglar!";
+            }
+            
+            note.html(message);
+        }
+    });
+    
+});
+
+    var mark = "";
+    var clueImage ="";
+
+    $(".search").on("click", function(){
+        mark = $(this).attr("data-name");
+        displayCluePic();
+        moveCluePic();
+    });
+
+    function displayCluePic() {
+        
+        //array to add secondary tags to location images
+        var subTags = ["skyline", "landmarks", "buildings", "history", "flags", "sports", "attractions", "people"];
+        //generates a random index value for the subTags array
+        var j = (Math.floor(Math.random() * subTags.length));
+        console.log("j:" + j);
+        //vars to construct query url
+        var key = "&api_key=ba1d8158e0ea3d52d7706e412bca51af";
+        // var apiSig = "&api_sig=e44b1e327a5cb3ab2f0d0386acc95e9a";
+        var format = "&format=json&nojsoncallback=1";
+        
+        var radius = "&radius=20+%28km%29";
+        var tags = "&tags=+" + mark + "+" + subTags[j];
+        console.log("tags: " + tags);
+        //query url
+        var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + radius + format;
+
+        
+        $.ajax({
+            url: queryUrl,
+            method: "GET"
+        })
+        .done(function(response){
+            var results = response.data;
+            console.log(response);
+
+            //generates a random index value for the photos of the response object
+            var i = (Math.floor(Math.random() * response.photos.photo.length));
+                console.log("i :" + i);
+
+            //set variables to the according values in JSON object
+            var photoId = response.photos.photo[i].id;
+            var serverId = response.photos.photo[i].server;
+            var farmId = response.photos.photo[i].farm;
+            var secret = response.photos.photo[i].secret;
+
+            //console log server farm secret and photoid
+            console.log("server " + serverId);
+            console.log("farm " + farmId);
+            console.log("secret " + secret);
+            console.log("photoID " + photoId);
+
+            //construct the url for the image
+            var imageUrl = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + photoId + "_" + secret + ".jpg";
+            console.log("initial" + imageUrl);
+            clueImage = imageUrl;
+
+            // creates a html tag for the image hint to be stored in clues
+            var imgHint = $("<img style ='height: 180px'; width: 180px; >");
+            imgHint.attr("src", imageUrl);
+            imgHint.addClass("currentImg");
+            // appends the image hint to the div with class insideRight
+            $(".insideLeft").append(imgHint);
+
+        })
+        
+    };
+
+    function moveCluePic(){
+
+        if (clueImage !==""){
+            $(".currentImg").remove();
+            // creates a html tag for the image hint to be stored in previous clues
+            var prevImgHint = $("<img style ='height: 70px; width: 70px; margin: 5px;' >");
+            prevImgHint.attr("src", clueImage);
+            prevImgHint.addClass("prevImg");
+            $(".insideRight").append(prevImgHint);
+            $(".prevImg").prepend(prevImgHint);
+            console.log("clues"+clueImage);
+        }
+    };
 
 
 

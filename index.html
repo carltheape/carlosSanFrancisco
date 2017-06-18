@@ -1,91 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Project 1</title>
 
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<head>
+    <title>Project 1</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/javascript/jquery.countdown.min.js"></script>
+    <script src="assets/countdown/jquery.countdown.js"></script>
+</head>
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-
-
-
-   <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
-
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-
-	</head>
-	<body>
-
-		<!-- Fixed navbar -->
-    
-
+<body>
+    <!-- Fixed navbar -->
     <div class="container">
         <div class="timer">
             <h1>Timer</h1>
+            <p id="note"></p>
         </div>
-    
-      
-<<<<<<< HEAD
-<!--       <div class="jumbotron map"> -->
-<!--         <h1>Big ole Map</h1> -->
-
-         <div id='mapid'></div>
-         <div id='mymap'></div>
-<!-- <script>
+        <!--       <div class="jumbotron map">
+        <h1>Big ole Map</h1>
+        
+      </div> -->
+        <div id='mapid'></div>
+        <div id='mymap'></div>
+        <!-- <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybHRoZWFwZSIsImEiOiJjajN6NGMybTQwMDB2MzJuMWdzZm12b3QwIn0.PP7mPZA5HjlHME4HiUQEPg';
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/satellite-v9'
 });
 </script> -->
-        
-<!--       </div> -->
-=======
-      <div class="jumbotron map">
-        <h1>Big ole Map</h1>
-        
-      </div>
->>>>>>> origin/JamesBranch
-
-      <div class="row container-fluid">
-          <div class="col-md-8 left rounded"><h3>Clues</h3>
-            <div class="insideLeft">
-                <h4>Clue goes here</h4>
+        <!--       </div> -->
+        <div class="row container-fluid">
+            <div class="col-md-8 left rounded">
+                <h3>Clues</h3>
+                <div class="insideLeft">
+                    <h4>Clue goes here</h4>
+                </div>
             </div>
-          </div>
-          <div class="col-md-3 right rounded"><h3>Previous Clues</h3>
-            <div class="insideRight">
-                <h4>Clue goes here</h4>
+            <div class="col-md-3 right rounded">
+                <h3>Previous Clues</h3>
+                <div class="insideRight">
+                    <h4>Clue goes here</h4>
+                </div>
             </div>
-          </div>
-      </div>
+            <button class="btn search" data-name="Atlanta">Atlanta</button>
+            <button class="btn search" data-name="Japan">Japan</button>
+            <button class="btn search" data-name="Alaska">Alaska</button>
+        </div>
+    </div>
+    <!-- /container -->
+    <script type="text/javascript" src="assets/javascript/script.js"></script>
+</body>
 
-    </div> <!-- /container -->
-
-   
-<<<<<<< HEAD
-<!--     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqIkP9gKhU7raMzCLqpCqh3Z2PZYM7LcA&callback=initMap"
-    type="text/javascript"></script> -->
-        <script type="text/javascript" src="assets/javascript/script.js"></script>
-
-
-=======
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqIkP9gKhU7raMzCLqpCqh3Z2PZYM7LcA&callback=initMap"
-    type="text/javascript"></script>
-
-    
->>>>>>> origin/JamesBranch
-
-	</body>
 </html>
