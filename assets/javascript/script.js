@@ -185,7 +185,11 @@ style: 'mapbox://styles/mapbox/satellite-v9',
 center: startingLatLon, // starting position
 zoom: 0.5, // starting zoom
 // interactive: false
+
 });
+map.dragRotate.disable();
+map.touchZoomRotate.disableRotation();
+map.addControl(new mapboxgl.NavigationControl());
 
 
 
@@ -230,13 +234,16 @@ places.forEach(function(marker) {
 var daysS = Math.floor(timeS / 86400);
 timeS -= daysS * 86400;
 
+
 // calculate (and subtract) whole hours
 var hoursS = Math.floor(timeS / 3600) % 24;
 timeS -= hoursS * 3600;
 
+
 // calculate (and subtract) whole minutes
 var minutesS = Math.floor(timeS / 60) % 60;
 timeS -= minutesS * 60;
+
 
 // what's left is seconds
 var secondsS = Math.floor(timeS % 60);  // in theory the modulus is not required
@@ -251,14 +258,14 @@ console.log(daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (
         // These options control the ending camera position: centered at
         // the target, at zoom level 9, and north up.
         center: target,
-        zoom:0.02,
+        zoom:4,
         bearing: 0,
 
         // These options control the flight curve, making it move
         // slowly and zoom out almost completely before starting
         // to pan.
-        speed: 0.1, // make the flying slow
-        curve: 1, // change the speed at which it zooms out
+        speed: 0.07, // make the flying slow
+        curve: 3, // change the speed at which it zooms out
 
          // This can be any easing function: it takes a number between
         // 0 and 1 and returns another number between 0 and 1.
