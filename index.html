@@ -16,27 +16,15 @@
     <script src="assets/countdown/jquery.countdown.js"></script>
 </head>
 
-<body>
+<body class="titlePage">
     <!-- Fixed navbar -->
     <div class="container">
         <div class="timer">
             <h1>Timer</h1>
             <p id="note"></p>
         </div>
-        <!--       <div class="jumbotron map">
-        <h1>Big ole Map</h1>
-        
-      </div> -->
         <div id='mapid'></div>
         <div id='mymap'></div>
-        <!-- <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybHRoZWFwZSIsImEiOiJjajN6NGMybTQwMDB2MzJuMWdzZm12b3QwIn0.PP7mPZA5HjlHME4HiUQEPg';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/satellite-v9'
-});
-</script> -->
-        <!--       </div> -->
         <div class="row container-fluid">
             <div class="col-md-8 left rounded">
                 <h3>Clues</h3>
@@ -53,6 +41,8 @@ style: 'mapbox://styles/mapbox/satellite-v9'
             <button class="btn search" data-name="Atlanta">Atlanta</button>
             <button class="btn search" data-name="Japan">Japan</button>
             <button class="btn search" data-name="Alaska">Alaska</button>
+            <button class="btn btn-primary sound">Toggle Sound</button>
+            <a class="btn btn-default" href="load.html" role="button">New Game</a>
         </div>
     </div>
     <!-- /container -->

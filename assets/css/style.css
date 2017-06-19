@@ -44,8 +44,12 @@ h3 {
 
 .btn {
     text-align: center;
-    margin-top: 300px;
+/*    margin-top: 300px;*/
     text-align: center;
+}
+
+.titlePage{
+    width: 100%;
 }
 
 .countdownHolder{
