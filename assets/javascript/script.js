@@ -2,7 +2,31 @@
 
 $( document ).ready(function() {
 
-var music = new Audio('assets/sounds/Motivated.mp3')
+          var calling ;
+//gets the query based on the button clicked
+      function displayCountryInfo() {
+        var countryId = $(this).attr("id");
+        var queryURL = "https://restcountries.eu/rest/v2/name/" + countryId.replace(/_/g, ' ');
+
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+          calling = response;
+          console.log(calling);
+        //   if (countryId.replace(/_/g, ' ') == response[0].name) {console.log(response[0].name)}
+        // else if (countryId.replace(/_/g, ' ') == response[1].name) {console.log(response[1].name)}
+        //     else{console.log(response[0].name)};
+        console.log(response[0].name);
+        console.log(response[0].timezones[0])
+    });
+
+};
+
+
+
+var music = new Audio('assets/sounds/Spy.mp3')
 music.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
@@ -16,6 +40,9 @@ $('.sound').click(function() {
       music.play();
   }
 });
+
+
+
 
 
 
@@ -38,7 +65,7 @@ var places =
 
 },
 {   city : "New York",
-    country : "USA",
+    country : "United States of America",
     location : [-74.005941,40.712784]
 
 },
@@ -47,9 +74,9 @@ var places =
     location : [-46.633309,-23.550520]
 
 },
-{   city : "Seoul",
-    country : "South Korea",
-    location : [126.977969,37.566535]
+{   city : "Astana",
+    country : "Kazakhstan",
+    location : [71.470356,51.160523]
 
 },
 {   city : "Mexico City",
@@ -152,7 +179,7 @@ var places =
 
 },
 {   city : "London",
-    country : "England",
+    country : "United Kingdom",
     location : [-0.127758,51.507351]
 
 },
@@ -172,7 +199,7 @@ var places =
 
 },
 {   city : "Bogota",
-    country : "Columbia",
+    country : "Colombia",
     location : [-74.072092,4.710989]
 
 },
@@ -183,7 +210,7 @@ var places =
 },
 ];
 var startingLoc = places[Math.floor(Math.random()*places.length)];
-var startingCity = startingLoc.city;
+var startingCity = startingLoc.city.replace(/\s/g, '');
 var startingCountry = startingLoc.country;
 var startingLatLon = startingLoc.location;
 var currentLoc = startingCity;
@@ -214,13 +241,14 @@ places.forEach(function(marker) {
     // create a DOM element for the marker
     var el = document.createElement('div');
     el.className = 'marker ' + marker.city.replace(/\s/g, '');
+    el.id = marker.country.replace(/\s/g, '_');
     el.innerHTML = "<h5 class='cityText'>" + marker.city +  ", " + marker.country + "</h5>";
     el.style.backgroundImage = 'url(assets/images/question.png)';
     el.style.width = 20 + 'px';
     el.style.height = 20 + 'px';
     el.style.backgroundSize = 'cover';
     el.style.backgroundRepeat = "no-repeat";
-    el.addEventListener('click', function() {
+    el.addEventListener('click', function(){
         el.style.backgroundImage = 'url(assets/images/Red_Arrow_Down.svg)';
         // window.alert(marker.city +  " " + marker.country);
         map.flyTo({center: marker.location});
@@ -244,6 +272,12 @@ places.forEach(function(marker) {
         console.log(timeM + "minutes");
         var timeS = timeM*60;
         console.log(timeS+"seconds");
+        // console.log("country ID"+countryId);
+        // displayCountryInfo();
+
+
+
+
 
 // calculate (and subtract) whole days
 var daysS = Math.floor(timeS / 86400);
@@ -262,12 +296,37 @@ timeS -= minutesS * 60;
 
 // what's left is seconds
 var secondsS = Math.floor(timeS % 60);  // in theory the modulus is not required
-console.log(daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS) + ("seconds to travel"))
+var travelTime = daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS) + ("seconds to travel")
+console.log(travelTime)
 
         
 
     // and now we're at the opposite point
     // isAtStart = !isAtStart;
+function handler(ev) {
+var target = $(ev.target);
+var elId = target.attr('class');
+if( target.is(".marker") ) {
+
+    newLatLon = ev.location;
+        console.log(newLatLon);
+        var distance = haversine(currentLatLon[1],currentLatLon[0],newLatLon[1], newLatLon[0]);
+        var timeH = distance/920; //747 crusing speed is 920km/hr
+        var timeM = timeH*60;
+        var timeS = timeM*60;
+var daysS = Math.floor(timeS / 86400);
+timeS -= daysS * 86400;
+var hoursS = Math.floor(timeS / 3600) % 24;
+timeS -= hoursS * 3600;
+var minutesS = Math.floor(timeS / 60) % 60;
+timeS -= minutesS * 60;
+var secondsS = Math.floor(timeS % 60);  // in theory the modulus is not required
+var travelTime = daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS) + ("seconds to travel")
+console.log(travelTime)
+}
+}
+$(".marker").mouseenter(handler);
+
 
     map.flyTo({
         // These options control the ending camera position: centered at
@@ -289,6 +348,9 @@ console.log(daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (
 
     });
     });
+
+    el.addEventListener('click', displayCountryInfo);
+
 
 
 
