@@ -16,15 +16,15 @@ $(document).ready(function(){
 		var j = (Math.floor(Math.random() * subTags.length));
 		console.log("j:" + j);
 		//vars to construct query url
-		var key = "&api_key=f7e4efbdf5067c85376b024076792689";
+		var key = "&api_key=ba1d8158e0ea3d52d7706e412bca51af";
 		// var apiSig = "&api_sig=e44b1e327a5cb3ab2f0d0386acc95e9a";
 		var format = "&format=json&nojsoncallback=1";
 		
-		var radius = "&radius=20+%28km%29";
+		// var radius = "&radius=20+%28km%29";
 		var tags = "&tags=+" + marker + "+" + subTags[j];
 		console.log("tags: " + tags);
 		//query url
-		var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + radius + format;
+		var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + format;
 
 		
 		$.ajax({
