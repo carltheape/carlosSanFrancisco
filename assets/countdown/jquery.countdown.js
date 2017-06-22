@@ -72,6 +72,8 @@
         return this;
     };
 
+    
+
 
     function init(elem, options){
         elem.addClass('countdownHolder');

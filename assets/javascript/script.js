@@ -1,5 +1,3 @@
-
-
 $( document ).ready(function() {
 
           var calling ;
@@ -265,15 +263,16 @@ places.forEach(function(marker) {
         var end = marker.location;
         var target = isAtStart ? end : start;
         var distance = haversine(lastLatLon[1],lastLatLon[0],currentLatLon[1], currentLatLon[0]);
-        console.log("distance:"+distance+"km")
+        console.log("distance: "+distance+" km")
         var timeH = distance/920; //747 crusing speed is 920km/hr
-        console.log(timeH+"hours")
+        console.log(timeH+" hours")
         var timeM = timeH*60;
-        console.log(timeM + "minutes");
+        console.log(timeM + " minutes");
         var timeS = timeM*60;
-        console.log(timeS+"seconds");
+        console.log(timeS+" seconds");
         // console.log("country ID"+countryId);
         // displayCountryInfo();
+
 
 
 
@@ -296,10 +295,10 @@ timeS -= minutesS * 60;
 
 // what's left is seconds
 var secondsS = Math.floor(timeS % 60);  // in theory the modulus is not required
-var travelTime = daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS) + ("seconds to travel")
-console.log(travelTime)
+var travelTime = daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS);
+console.log("Travel time is " + travelTime);
 
-        
+  
 
     // and now we're at the opposite point
     // isAtStart = !isAtStart;
@@ -394,7 +393,7 @@ $(function(){
                 message += "left until the new year!";
             }
             else {
-                message += "left to catch the burglar!";
+                message += "left to catch Carlos San Francisco!";
             }
             
             note.html(message);
@@ -464,6 +463,7 @@ $(function(){
             var imgHint = $("<img style ='height: 180px'; width: 180px; >");
             imgHint.attr("src", imageUrl);
             imgHint.addClass("currentImg");
+            imgHint.addClass("img-rounded");
             // appends the image hint to the div with class insideRight
             $(".insideLeft").append(imgHint);
 
@@ -479,11 +479,14 @@ $(function(){
             var prevImgHint = $("<img style ='height: 70px; width: 70px; margin: 5px;' >");
             prevImgHint.attr("src", clueImage);
             prevImgHint.addClass("prevImg");
+            prevImgHint.addClass("img-rounded zoom");
             $(".insideRight").append(prevImgHint);
             $(".prevImg").prepend(prevImgHint);
             console.log("clues"+clueImage);
         }
     };
+
+
 
 
 
