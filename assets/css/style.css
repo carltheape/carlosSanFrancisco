@@ -175,4 +175,8 @@ h5 {position: relative;
 
 
 }
-.marker:hover h5{display: inline;}
+.marker:hover h5{display: block;}
+
+#carlos{
+    display: none;
+}
