@@ -12,7 +12,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
-    <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js'></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="assets/countdown/jquery.countdown.js"></script>
 </head>
@@ -20,30 +19,38 @@
 <body class="titlePage">
     <!-- Fixed navbar -->
     <div class="container">
-        <div id="timer">
-            <h1>Timer</h1>
-            <p id="note"></p>
-        </div>
-        <div id='mapid'></div>
-        <div id='mymap'></div>
+        
+        <div id='mapid' class="rounded"></div>
+        <div id='mymap' class="rounded"></div>
         <div class="row container-fluid">
-            <div class="col-md-8 left rounded">
+            <div class="col-md-4 left rounded">
                 <h3>Clues</h3>
                 <div class="insideLeft">
                     <h4>Clue goes here</h4>
                 </div>
             </div>
-            <div class="col-md-3 right rounded">
+            <div class="col-md-4 middle rounded">
+                <div id="timer">
+                
+                    <p id="note"></p>
+                </div>
+            </div>
+            <div class="col-md-4 right rounded">
                 <h3>Previous Clues</h3>
                 <div class="insideRight">
+
+                    
+
                     <h4>Clue goes here</h4>
                 </div>
             </div>
             <button class="btn search" data-name="Atlanta">Atlanta</button>
             <button class="btn search" data-name="Japan">Japan</button>
             <button class="btn search" data-name="Alaska">Alaska</button>
-            <button class="btn btn-primary sound">Toggle Sound</button>
-            <a class="btn btn-default" href="load.html" role="button">New Game</a>
+            <div class="buttonsNew">
+                <button class="btn btn-primary sound">Toggle Sound</button>
+                <a class="btn btn-default" href="load.html" role="button">New Game</a>
+            </div>
         </div>
     </div>
     <!-- /container -->

@@ -1,3 +1,4 @@
+
 /**
  * @name        jQuery Countdown Plugin
  * @author        Martin Angelov
@@ -72,6 +73,8 @@
         return this;
     };
 
+    
+
 
     function init(elem, options){
         elem.addClass('countdownHolder');
@@ -135,4 +138,5 @@
                 replacement.addClass('static');
             });
     }
+
 })(jQuery);
