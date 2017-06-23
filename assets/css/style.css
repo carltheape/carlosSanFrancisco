@@ -7,6 +7,7 @@
     height: 340px;
 }
 
+
 .forms {
     width: 100%;
     background-color: black;
@@ -16,6 +17,7 @@ body {
     background-color: #B30101;
 }
 
+
 #timer {
     text-align: center;
     color: white;
@@ -24,6 +26,7 @@ body {
 }
 
 .left {
+
     background-color: white;
     height: 260px;
     text-align: center;
@@ -36,9 +39,11 @@ body {
     height: 260px;
     text-align: center;
 
+
 }
 
  .right {
+
     background-color: white;
     height:260px;
     text-align: center;
@@ -48,7 +53,6 @@ body {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     overflow: auto;
-
  }
 
  .rounded {
@@ -68,12 +72,15 @@ h3 {
 
 .titlePage{
     width: 100%;
+
     height: 440px;
+
 }
 
 .countdownHolder{
     width:450px;
     margin:0 auto;
+
     font: 30px/1.5 'Open Sans Condensed',sans-serif;
     text-align:center;
     letter-spacing:-3px;
@@ -157,7 +164,9 @@ h3 {
 
 #note{
     width: 100%;
+
     font-size: 22px;
+
     letter-spacing: 1px;
 }
 
@@ -166,6 +175,7 @@ h3 {
 	width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
+
 }
 
 /*.marker{
@@ -193,10 +203,8 @@ h5 {position: relative;
 	text-align: center;
 	display: none;
 	z-index: 100;
-
-
 }
-.marker:hover h5{display: inline;}
+.marker:hover h5{display: block;}
 
 .load2Title {
     border: 4px solid black;
@@ -388,3 +396,7 @@ span {
 
 
 
+
+/*#carlos{
+    display: none;
+}*/

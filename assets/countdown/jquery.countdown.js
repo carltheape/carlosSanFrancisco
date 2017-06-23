@@ -1,3 +1,4 @@
+
 /**
  * @name        jQuery Countdown Plugin
  * @author        Martin Angelov
@@ -137,4 +138,5 @@
                 replacement.addClass('static');
             });
     }
+
 })(jQuery);
