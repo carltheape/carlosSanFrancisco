@@ -18,8 +18,6 @@ $(document).ready(function() {
 
 
 
-
-
     function haversine() {
         var radians = Array.prototype.map.call(arguments, function(deg) {
             return deg / 180.0 * Math.PI; });
@@ -191,7 +189,7 @@ $(document).ready(function() {
     console.log("you started in: " + startingLoc.country);
     var carlosStart = places[Math.floor(Math.random() * places.length)];
     console.log("carlos started in: " + carlosStart.country);
-    var startingCity = startingLoc.city.replace(/\s/g, '');
+    var startingCity = startingLoc.city.replace(/\s/g, '_');
     var startingCountry = startingLoc.country;
     var startingLatLon = startingLoc.location;
     var currentLoc = startingCity;
@@ -209,26 +207,27 @@ $(document).ready(function() {
         zoom: 0.5, // starting zoom
         // interactive: false
 
+
     });
     map.dragRotate.disable();
     map.touchZoomRotate.disableRotation();
     map.addControl(new mapboxgl.NavigationControl());
 
-    var currentElement,
-        prevElement,
-        resultsPrev = $("#results-prev"),
-        resultsCurrent = $("#results-current");
+    // var currentElement,
+    //     prevElement,
+    //     resultsPrev = $("#results-prev"),
+    //     resultsCurrent = $("#results-current");
     var newLatLon = "";
     var newTravelTime = "";
 
 
-    // add markers to map
+
     // add markers to map
     places.forEach(function(marker) {
         // create a DOM element for the marker
         var el = document.createElement('div');
         var trav = document.createElement('h5');
-        el.className = 'marker ' + marker.city.replace(/\s/g, '');
+        el.className = 'marker ' + marker.city.replace(/\s/g, '_');
         el.id = marker.country.replace(/\s/g, '_');
         trav.id = 'loc';
         trav.className = 'loc';
@@ -246,13 +245,13 @@ $(document).ready(function() {
         el.addEventListener('click', function() {
             el.style.backgroundImage = 'url(assets/images/Red_Arrow_Down.svg)';
             // window.alert(marker.city +  " " + marker.country);
-            map.flyTo({ center: marker.location });
+            // map.flyTo({ center: marker.location });
             lastLoc = currentLoc;
             lastLatLon = currentLatLon;
             console.log("last location: " + lastLoc);
             console.log("last Lat. Long: " + lastLatLon);
             $('.' + lastLoc).css('background-image', 'url(assets/images/check.png)');
-            currentLoc = marker.city.replace(/\s/g, '');
+            currentLoc = marker.city.replace(/\s/g, '_');
             currentLatLon = marker.location;
             console.log("current location: " + currentLoc);
             console.log("current Lat Long: " + currentLatLon);
@@ -288,30 +287,14 @@ $(document).ready(function() {
             var travelTime = daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS) + ("seconds to travel");
             console.log(travelTime);
 
-            map.flyTo({
-                // These options control the ending camera position: centered at
-                // the target, at zoom level 9, and north up.
-                center: target,
-                zoom: 4,
-                bearing: 0,
-
-                // These options control the flight curve, making it move
-                // slowly and zoom out almost completely before starting
-                // to pan.
-                speed: 0.07, // make the flying slow
-                curve: 3, // change the speed at which it zooms out
-
-                // This can be any easing function: it takes a number between
-                // 0 and 1 and returns another number between 0 and 1.
-
-
-
-            });
+           
 
         });
 
 
         el.addEventListener('click', displayCountryInfo);
+
+      
 
 
 
@@ -323,10 +306,11 @@ $(document).ready(function() {
             .addTo(map);
     });
 
+
 var carl = document.createElement('div');
         carl.id = 'carlos';
         carl.innerHTML = " ";
-        carl.style.backgroundImage = 'url(assets/images/devil.gif)';
+        carl.style.backgroundImage = 'url(assets/images/Devil.gif)';
         carl.style.width = 20 + 'px';
         carl.style.height = 20 + 'px';
         carl.style.backgroundSize = 'cover';
@@ -584,7 +568,131 @@ $("#carlos").on("click", function() {
     alert("you got me!")
 });
 
+//////////////////////////////////////////////////////
+
+/*
+ * jQuery Animate From To plugin 1.0
+ *
+ * Copyright (c) 2011 Emil Stenstrom <http://friendlybit.com>
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ */
+(function($) {
+    $.fn.animate_from_to = function(targetElm, options){
+        return this.each(function(){
+            animate_from_to(this, targetElm, options);
+        });
+    };
+
+    $.extend({
+        animate_from_to: animate_from_to
+    });
+
+    function animate_from_to(sourceElm, targetElm, options) {
+        var source = $(sourceElm).eq(0),
+            target = $(targetElm).eq(0);
+
+        var defaults = {
+            pixels_per_second: 1000,
+            initial_css: {
+                "background": "#dddddd",
+                "opacity": 0.8,
+                "position": "absolute",
+                "top": source.offset().top,
+                "left": source.offset().left,
+                "height": source.height(),
+                "width": source.width(),
+                "z-index": 100000,
+                "image": ""
+            },
+            square: '',
+            callback: function(){ return; }
+        }
+        if (options && options.initial_css) {
+            options.initial_css = $.extend({}, defaults.initial_css, options.initial_css);
+        }
+        options = $.extend({}, defaults, options);
+
+        var target_height = target.innerHeight(),
+            target_width = target.innerWidth();
+
+        if (options.square.toLowerCase() == 'height') {
+            target_width = target_height;
+        } else if (options.square.toLowerCase() == 'width') {
+            target_height = target_width;
+        }
+
+        var shadowImage = "";
+        if (options.initial_css.image != "") {
+            shadowImage = "<img src='" + options.initial_css.image + "' style='width: 100%; height: 100%' />";
+        }
+
+        var dy = source.offset().top + source.width()/2 - target.offset().top,
+            dx = source.offset().left + source.height()/2 - target.offset().left,
+            pixel_distance = Math.floor(Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))),
+            duration = (pixel_distance/options.pixels_per_second)*1000,
+
+            shadow = $('<div>' + shadowImage + '</div>')
+                .css(options.initial_css)
+                .appendTo('body')
+                .animate({
+                    top: target.offset().top,
+                    left: target.offset().left,
+                    height: target_height,
+                    width: target_width
+                }, {
+                    duration: duration
+                })
+                .animate({
+                    opacity: 0
+                }, {
+                    duration: 100,
+                    complete: function(){
+                        map.flyTo({
+                // These options control the ending camera position: centered at
+                // the target, at zoom level 9, and north up.
+                center: currentLatLon,
+                zoom: 0.5,
+                bearing: 0,
+
+                // These options control the flight curve, making it move
+                // slowly and zoom out almost completely before starting
+                // to pan.
+                speed: 0.6, // make the flying slow
+                curve: 3, // change the speed at which it zooms out
+
+                // This can be any easing function: it takes a number between
+                // 0 and 1 and returns another number between 0 and 1.
+
+
+
+            });
+                        shadow.remove();
+                        return options.callback();
+
+                         
+
+                    }
+                });
+    }
+})(jQuery);
+$(".marker").on("click", function() {
+$('.'+lastLoc).animate_from_to($('.'+currentLoc),{
+    pixels_per_second: 100,
+    initial_css: {
+        'background': "none",
+        'image' : 'assets/images/plane.png',
+    },
 });
 
 
-//document ready brackets
+});
+
+
+    ///////////////////////////////////////////////////////////////////
+
+});//document ready brackets
+
+
