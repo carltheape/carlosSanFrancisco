@@ -203,6 +203,7 @@ $(document).ready(function() {
     var currentLatLon = startingLatLon;
     var lastLoc = startingCity;
     var lastLatLon = startingLatLon;
+
     // var globalDays = '';
     // var globalHours = '';
     // var globalMinutes = '';
@@ -264,6 +265,10 @@ $(document).ready(function() {
             currentLatLon = marker.location; //updating the old and new locations with images...
             // console.log("current location: " + currentLoc);
             // console.log("current Lat Long: " + currentLatLon);
+            var compareDist = haversine(currentLatLon[1], currentLatLon[0], carlosStart.location[1], carlosStart.location[0]);
+            var lastCompareDist = haversine(lastLatLon[1], lastLatLon[0], carlosStart.location[1], carlosStart.location[0]);
+            if(compareDist<lastCompareDist){alert("you are on the right track!")}
+            else{alert("the trail is getting cold...")};
             var isAtStart = currentLoc; //calculates the distance and time it takes to travel from one point to another...
             var end = marker.location;
             var target = isAtStart ? end : start;
