@@ -43,7 +43,7 @@ body {
 }
 
  .right {
-
+    padding: 35px;
     background-color: white;
     height:260px;
     text-align: center;
@@ -58,6 +58,11 @@ body {
  .rounded {
   border-radius: 5px;
 }
+/*.rounded: hover{
+  z-index: 100;
+  width:200px;
+  height: 200px;  
+}*/
 
 h3 {
     text-decoration: underline;
@@ -240,11 +245,11 @@ cursor: zoom-in;
 .zoom:focus {
 /**adjust scale to desired size, 
 add browser prefixes**/
--ms-transform: scale(2.5);    
--moz-transform: scale(2.5);  
--webkit-transform: scale(2.5);  
--o-transform: scale(2.5);  
-transform: scale(2.5);    
+-ms-transform: matrix(2.5, 0, 0, 2.5, 70, 20) /*scale(2.5)*/;    
+-moz-transform: matrix(2.5, 0, 0, 2.5, 70, 20)/*scale(2.5)*/;  
+-webkit-transform: matrix(2.5, 0, 0, 2.5, 70, 20)/*scale(2.5)*/;  
+-o-transform: matrix(2.5, 0, 0, 2.5, 70, 20)/*scale(2.5)*/;  
+transform: matrix(2.5, 0, 0, 2.5, 70, 20)/*scale(2.5)*/;    
 position:relative;      
 z-index:100;  
 }

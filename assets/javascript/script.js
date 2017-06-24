@@ -473,7 +473,7 @@ function displayCluePic() {
             clueImage = imageUrl;
 
             // creates a html tag for the image hint to be stored in clues
-            var imgHint = $("<img style ='height: 180px'; width: 180px; >");
+            var imgHint = $("<img style ='height: 180px; width: 180px;' >");
             imgHint.attr("src", imageUrl);
             imgHint.addClass("currentImg");
             imgHint.addClass("img-rounded");
@@ -483,16 +483,23 @@ function displayCluePic() {
         })
 
 };
+    //used to increment count of id to prev clues
+    var count = 0;
+    //stores prev source to avoid duplicated prev clues
+    var prevSrc="";
+
 
 function moveCluePic() {
 
-    if (clueImage !== "") {
+    if (clueImage !=="" && clueImage !== prevSrc) {
         $(".currentImg").remove();
         // creates a html tag for the image hint to be stored in previous clues
-        var prevImgHint = $("<img style ='height: 70px; width: 70px; margin: 5px;' >");
+        var prevImgHint = $("<img style ='height: 72px; width: 72px; margin: 5px;' >");
         prevImgHint.attr("src", clueImage);
         prevImgHint.addClass("prevImg");
         prevImgHint.addClass("img-rounded zoom");
+        prevSrc = clueImage;
+        console.log("Prev Src : " + prevSrc);
         $(".insideRight").append(prevImgHint);
         $(".prevImg").prepend(prevImgHint);
         console.log("clues" + clueImage);
