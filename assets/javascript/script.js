@@ -443,7 +443,7 @@ $(".search").on("click", function() {
 function displayCluePic() {
 
     //array to add secondary tags to location images
-    var subTags = ["skyline", "landmarks", "buildings", "history", "flags", "sports", "attractions", "people"];
+    var subTags = ["skyline", "park", "art", "food", "festival", "landmark"];
     //generates a random index value for the subTags array
     var j = (Math.floor(Math.random() * subTags.length));
     console.log("j:" + j);
@@ -451,13 +451,16 @@ function displayCluePic() {
     var key = "&api_key=ba1d8158e0ea3d52d7706e412bca51af";
     // var apiSig = "&api_sig=e44b1e327a5cb3ab2f0d0386acc95e9a";
     var format = "&format=json&nojsoncallback=1";
-
+    var lat = carlosStart.location[1];
+    var long = carlosStart.location[0];
+    var coordinates = "&lat=" + lat + "&lon=" + long;
+    console.log("coordinates : " + coordinates);
     var radius = "&radius=20+%28km%29";
-    var tags = "&tags=+" + mark + "+" + subTags[j];
+    var tags = "&tags=" + subTags[j]; //+" + carlosStart.city + "+" +
     console.log("tags: " + tags);
     //query url
-    var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + radius + format;
-
+    var queryUrl = //"https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + radius + format;
+    "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + coordinates + format;
 
     $.ajax({
             url: queryUrl,
@@ -489,7 +492,7 @@ function displayCluePic() {
             clueImage = imageUrl;
 
             // creates a html tag for the image hint to be stored in clues
-            var imgHint = $("<img style ='height: 180px; width: 180px;' >");
+            var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");
             imgHint.attr("src", imageUrl);
             imgHint.addClass("currentImg");
             imgHint.addClass("img-rounded");

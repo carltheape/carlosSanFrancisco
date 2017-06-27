@@ -43,7 +43,7 @@ body {
 }
 
  .right {
-    padding: 35px;
+    padding-left: 20px;
     background-color: white;
     height:260px;
     text-align: center;
