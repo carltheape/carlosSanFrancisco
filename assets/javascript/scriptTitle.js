@@ -1,4 +1,3 @@
-
 $( document ).ready(function() {
 
 var music = new Audio('assets/sounds/Murder.mp3')
@@ -16,5 +15,15 @@ $('.sound').click(function() {
       music.play();
   }
 });
+    $(".button1").click(function(){
+        $(".titlePage").toggleClass("main");
+        $(".test1").toggleClass("test2");
+        $('.bottom').append('<button class="btn btn-default"><a href="index.html">Play Game</a></button>');
+        $(this).remove();
+    });
 
 });
+
+
+
+
