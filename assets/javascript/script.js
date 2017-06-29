@@ -606,6 +606,7 @@ $(document).ready(function() {
         moveCluePic();
     });
 
+    //Flickr API call with subtags
     function displayCluePic() {
 
         //array to add secondary tags to location images
@@ -618,24 +619,84 @@ $(document).ready(function() {
         // var apiSig = "&api_sig=e44b1e327a5cb3ab2f0d0386acc95e9a";
         var format = "&format=json&nojsoncallback=1";
         var lat = carlosStart.location[1];
-   var long = carlosStart.location[0];
-    var coordinates = "&lat=" + lat + "&lon=" + long;
-    console.log("coordinates : " + coordinates);
+        var long = carlosStart.location[0];
+        var coordinates = "&lat=" + lat + "&lon=" + long;
+        console.log("coordinates : " + coordinates);
 
         var radius = "&radius=20+%28km%29";
         var tags = "&tags=" + subTags[j]; //+" + carlosStart.city + "+" +
         console.log("tags: " + tags);
         //query url
-var queryUrl = //"https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + radius + format;
-    "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + coordinates + format;
+        var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + coordinates + format;
 
         $.ajax({
+                url: queryUrl,
+                method: "GET"
+            })
+        .done(function(response) {
+            var results = response.data;
+            console.log(response);
+
+            if(response.photos.photo.length >1 ) {
+                //generates a random index value for the photos of the response object
+                var i = (Math.floor(Math.random() * response.photos.photo.length));
+                console.log("i :" + i);
+
+                //set variables to the according values in JSON object
+                var photoId = response.photos.photo[i].id;
+                var serverId = response.photos.photo[i].server;
+                var farmId = response.photos.photo[i].farm;
+                var secret = response.photos.photo[i].secret;
+
+                //console log server farm secret and photoid
+                console.log("server " + serverId);
+                console.log("farm " + farmId);
+                console.log("secret " + secret);
+                console.log("photoID " + photoId);
+
+              
+                //construct the url for the image
+                var imageUrl = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + photoId + "_" + secret + ".jpg";
+                console.log("initial" + imageUrl);
+                clueImage = imageUrl;
+
+                // creates a html tag for the image hint to be stored in clues
+                var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                
+                imgHint.attr("src", imageUrl);
+                imgHint.addClass("currentImg");
+                imgHint.addClass("img-rounded");
+                // appends the image hint to the div with class insideRight
+                $(".insideLeft").append(imgHint);
+            }else{
+                coordinateTagsOnly();
+            }
+
+            
+        });
+
+    };
+
+    //fallback FLICR API call if no subtags work with coordinates
+    function coordinateTagsOnly() {
+        //vars to construct query url
+        var key = "&api_key=ba1d8158e0ea3d52d7706e412bca51af";
+        // var apiSig = "&api_sig=e44b1e327a5cb3ab2f0d0386acc95e9a";
+        var format = "&format=json&nojsoncallback=1";
+        var lat = carlosStart.location[1];
+        var long = carlosStart.location[0];
+        var coordinates = "&lat=" + lat + "&lon=" + long;
+        console.log("coordinates : " + coordinates);
+        //query url
+        var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + coordinates + format;    
+         
+         $.ajax({
                 url: queryUrl,
                 method: "GET"
             })
             .done(function(response) {
                 var results = response.data;
                 console.log(response);
+
 
                 //generates a random index value for the photos of the response object
                 var i = (Math.floor(Math.random() * response.photos.photo.length));
@@ -653,21 +714,22 @@ var queryUrl = //"https://api.flickr.com/services/rest/?method=flickr.photos.sea
                 console.log("secret " + secret);
                 console.log("photoID " + photoId);
 
-                //construct the url for the image
+                 //construct the url for the image
                 var imageUrl = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + photoId + "_" + secret + ".jpg";
                 console.log("initial" + imageUrl);
                 clueImage = imageUrl;
 
                 // creates a html tag for the image hint to be stored in clues
-var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                imgHint.attr("src", imageUrl);
+                var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                
+                imgHint.attr("src", imageUrl);
                 imgHint.addClass("currentImg");
                 imgHint.addClass("img-rounded");
                 // appends the image hint to the div with class insideRight
                 $(".insideLeft").append(imgHint);
-
-            })
-
+            });
     };
+
+
     //used to increment count of id to prev clues
     var count = 0;
     //stores prev source to avoid duplicated prev clues
