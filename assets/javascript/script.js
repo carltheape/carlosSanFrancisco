@@ -679,13 +679,13 @@ var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");        
         if (clueImage !== "" && clueImage !== prevSrc) {
             $(".currentImg").remove();
             // creates a html tag for the image hint to be stored in previous clues
-            var prevImgHint = $("<img style ='height: 72px; width: 72px; margin: 5px;' >");
+            var prevImgHint = $("<img style ='height: 40px; width: 40px; margin: 5px;' >");
             prevImgHint.attr("src", clueImage);
             prevImgHint.addClass("prevImg");
             prevImgHint.addClass("img-rounded zoom");
             prevSrc = clueImage;
             console.log("Prev Src : " + prevSrc);
-            $(".insideRight").append(prevImgHint);
+            $("#imgClue").append(prevImgHint);
             $(".prevImg").prepend(prevImgHint);
             console.log("clues" + clueImage);
         }
