@@ -37,151 +37,212 @@ $(document).ready(function() {
     var places = [{
         city: "Beijing",
         country: "China",
-        location: [116.39723, 39.9075]
+        location: [116.39723, 39.9075],
+        continent: "east-n-southeast-asia",
+        code: "ch"
 
     }, {
         city: "New York",
         country: "United States of America",
-        location: [-74.005941, 40.712784]
+        location: [-74.005941, 40.712784],
+        continent: "north-america",
+        code: "us"
+
 
     }, {
         city: "Sao Paulo",
         country: "Brazil",
-        location: [-46.633309, -23.550520]
+        location: [-46.633309, -23.550520],
+        continent:"south-america",
+        code:"br"
 
     }, {
         city: "Astana",
         country: "Kazakhstan",
-        location: [71.470356, 51.160523]
+        location: [71.470356, 51.160523],
+        continent:"central-asia",
+        code:"kz"
 
     }, {
         city: "Mexico City",
         country: "Mexico",
-        location: [-99.133208, 19.432608]
+        location: [-99.133208, 19.432608],
+        continent: "north-america",
+        code:"mx"
 
     }, {
         city: "Osaka",
         country: "Japan",
-        location: [135.502165, 34.693738]
+        location: [135.502165, 34.693738],
+        continent:"east-n-southeast-asia",
+        code:"ja"
 
     }, {
         city: "Manila",
         country: "Philippines",
-        location: [120.984219, 14.599512]
+        location: [120.984219, 14.599512],
+        continent:"east-n-southeast-asia",
+        code:"rp"
 
     }, {
         city: "Mumbai",
         country: "India",
-        location: [72.877656, 19.075984]
+        location: [72.877656, 19.075984],
+        continent:"south-asia",
+        code:"in"
 
     }, {
         city: "Bangkok",
         country: "Thailand",
-        location: [100.501765, 13.756331]
+        location: [100.501765, 13.756331],
+        continent:"east-n-southeast-asia",
+        code:"th"
 
     }, {
         city: "Jakarta",
         country: "Indonesia",
-        location: [106.865039, -6.175110]
+        location: [106.865039, -6.175110],
+        continent:"east-n-southeast-asia",
+        code:"th"
     }, {
         city: "Lagos",
         country: "Nigeria",
-        location: [3.379206, 6.524379]
+        location: [3.379206, 6.524379],
+        continent:"africa",
+        code:"ni"
 
     }, {
         city: "Johannesburg",
         country: "South Africa",
-        location: [28.047305, -26.204103]
+        location: [28.047305, -26.204103],
+        continent:"africa",
+        code:"sf"
 
     }, {
         city: "Cairo",
         country: "Egypt",
-        location: [31.235712, 30.044420]
+        location: [31.235712, 30.044420],
+        continent:"africa",
+        code:"eg"
 
     }, {
         city: "Baghdad",
         country: "Iraq",
-        location: [44.361488, 33.312806]
+        location: [44.361488, 33.312806],
+        continent:"middle-east",
+        code:"iz"
 
     }, {
         city: "Buenos Aires",
         country: "Argentina",
-        location: [-58.381559, -34.603684]
+        location: [-58.381559, -34.603684],
+        continent:"south-america",
+        code:"ar"
 
     }, {
         city: "Santiago",
         country: "Chile",
-        location: [-70.669265, -33.448890]
+        location: [-70.669265, -33.448890],
+        continent:"south-america",
+        code:"ci"
 
     }, {
         city: "Moscow",
         country: "Russia",
-        location: [37.617300, 55.755826]
+        location: [37.617300, 55.755826],
+        continent:"central-asia",
+        code:"rs"
 
     }, {
         city: "Ulaanbaatar",
         country: "Mongolia",
-        location: [106.905744, 47.886399]
+        location: [106.905744, 47.886399],
+        continent:"east-n-southeast-asia",
+        code:"mg"
 
     }, {
         city: "Karachi",
         country: "Pakistan",
-        location: [67.009939, 24.861462]
+        location: [67.009939, 24.861462],
+        continent:"south-asia",
+        code:"pk"
 
     }, {
         city: "Paris",
         country: "France",
-        location: [2.352222, 48.856614]
+        location: [2.352222, 48.856614],
+        continent:"europe",
+        code:"fr"
 
     }, {
         city: "Istanbul",
         country: "Turkey",
-        location: [28.978359, 41.008238]
+        location: [28.978359, 41.008238],
+        continent:"middle-east",
+        code:"tu"
 
     }, {
         city: "Kinshasa",
         country: "Congo",
-        location: [15.266293, -4.441931]
+        location: [15.266293, -4.441931],
+        continent:"africa",
+        code:"cf"
 
     }, {
         city: "Sydney",
         country: "Australia",
-        location: [151.209296, -33.868820]
+        location: [151.209296, -33.868820],
+        continent:"australia-oceania",
+        code:"as"
 
     }, {
         city: "Madrid",
         country: "Spain",
-        location: [-3.703790, 40.416775]
+        location: [-3.703790, 40.416775],
+        continent:"europe",
+        code:"sp"
 
     }, {
         city: "London",
         country: "United Kingdom",
-        location: [-0.127758, 51.507351]
+        location: [-0.127758, 51.507351],
+        continent:"europe",
+        code:"uk"
 
     }, {
         city: "Vancouver",
         country: "Canada",
-        location: [-123.120738, 49.282729]
+        location: [-123.120738, 49.282729],
+        continent:"north-america",
+        code:"ca"
 
     }, {
         city: "Naples",
         country: "Italy",
-        location: [14.268124, 40.851775]
+        location: [14.268124, 40.851775],
+        continent:"europe",
+        code:"it"
 
     }, {
         city: "Tehran",
         country: "Iran",
-        location: [51.388974, 35.689197]
+        location: [51.388974, 35.689197],
+        continent:"middle-east",
+        code:"ir"
 
     }, {
         city: "Bogota",
         country: "Colombia",
-        location: [-74.072092, 4.710989]
+        location: [-74.072092, 4.710989],
+        continent:"south-america",
+        code:"co"
 
     }, {
         city: "Lima",
         country: "Peru",
-        location: [-77.042754, -12.046373]
+        location: [-77.042754, -12.046373],
+        continent:"south-america",
+        code:"pe"
 
     }];
 
@@ -244,6 +305,8 @@ $(document).ready(function() {
         trav.className = 'loc';
         el.dataset.lat = [marker.location[0]];
         el.dataset.long = [marker.location[1]];
+        el.dataset.continent = [marker.continent];
+        el.dataset.code = [marker.code];
         el.innerHTML = "<h5 class='cityText'>" + marker.city + ", " + marker.country + "</h5>";
         trav.innerHTML = newTravelTime;
         el.style.backgroundImage = 'url(assets/images/question.png)';
@@ -267,8 +330,8 @@ $(document).ready(function() {
             // console.log("current Lat Long: " + currentLatLon);
             var compareDist = haversine(currentLatLon[1], currentLatLon[0], carlosStart.location[1], carlosStart.location[0]);
             var lastCompareDist = haversine(lastLatLon[1], lastLatLon[0], carlosStart.location[1], carlosStart.location[0]);
-            if(compareDist<lastCompareDist){alert("you are on the right track!")}
-            else{alert("the trail is getting cold...")};
+            if(compareDist<lastCompareDist){console.log("you are on the right track!")}
+            else{console.log("the trail is getting cold...")};
             var isAtStart = currentLoc; //calculates the distance and time it takes to travel from one point to another...
             var end = marker.location;
             var target = isAtStart ? end : start;
@@ -341,55 +404,153 @@ $(document).ready(function() {
     // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
     $(".marker").css('cursor', 'pointer');
     //this is the code that will send a query for the type of data to wolfram alpha for a given country...
-    function displayCountryInfo() {
-        var factTable = ["GDP", "population", "land+size", "founded", "age", "vehicles", "roads", "elevation", "unemployment+rate", "population+density", "poverty", "debt", "education", "current+time", "population+growth", "army", "average+income", "life+expectancy", "literacy+rate", "death+rate", "fertility+rate", "human+development+index"];
-        var randomCat = factTable[Math.floor(Math.random() * factTable.length)];
-        var countryId = $(this).attr("id");
-        var queryCont = countryId.replace(/_/g, '+');
-        var randoFact = queryCont + "+" + randomCat;
+       function displayCountryInfo() {
+        var queryURL = "https://raw.githubusercontent.com/opendatajson/factbook.json/master/"+ $(this).data('continent')+"/"+$(this).data('code')+".json";
+
 
         $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+          calling = response;
+          var obj = JSON.parse(response);
+          console.log(obj);
+      });
+    };
+
+    (function($){
+    
+    // Number of seconds in every time division
+    var days    = 24*60*60,
+        hours    = 60*60,
+        minutes    = 60;
+    
+    // Creating the plugin
+    $.fn.countdown = function(prop){
+        
+        var options = $.extend({
+            callback    : function(){},
+            timestamp    : 0
+        },prop);
+        
+        var left, d, h, m, s, positions;
+
+        // Initialize the plugin
+        init(this, options);
+        
+        positions = this.find('.position');
+        
+        (function tick(){
+            
+            // Time left
+            left = Math.floor((options.timestamp - (new Date())) / 1000);
+            
+            if(left < 0){
+                left = 0;
+            }
+            
+            // Number of days left
+            d = Math.floor(left / days);
+            updateDuo(0, 1, d);
+            left -= d*days;
+            
+            // Number of hours left
+            h = Math.floor(left / hours);
+            updateDuo(2, 3, h);
+            left -= h*hours;
+            
+            // Number of minutes left
+            m = Math.floor(left / minutes);
+            updateDuo(4, 5, m);
+            left -= m*minutes;
+            
+            // Number of seconds left
+            s = left;
+            updateDuo(6, 7, s);
+            
+            // Calling an optional user supplied callback
+            options.callback(d, h, m, s);
+            
+            // Scheduling another call of this function in 1s
+            setTimeout(tick, 1000);
+        })();
+        
+        // This function updates two digit positions at once
+        function updateDuo(minor,major,value){
+            switchDigit(positions.eq(minor),Math.floor(value/10)%10);
+            switchDigit(positions.eq(major),value%10);
+        }
+        
+        return this;
+    };
+
+    
 
 
-            // The 'type' property sets the HTTP method.
-            // A value of 'PUT' or 'DELETE' will trigger a preflight request.
-            type: 'GET',
+    function init(elem, options){
+        elem.addClass('countdownHolder');
 
-            // The URL to make the request to.
-            //THIS NEEDS SOME SERIOUS HELP BECAUSE CROSSORIGIN.ME IS NOT THE CORRECT WAY TO DO THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            url: "http://crossorigin.me/http://api.wolframalpha.com/v1/result?i=" + randoFact + "&appid=JGT6P6-UQJ3KGT3J5&format=plaintext",
-            contentType: 'text/plain',
-
-            xhrFields: {
-                // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
-                // This can be used to set the 'withCredentials' property.&output=JSON
-                // Set the value to 'true' if you'd like to pass cookies to the server.
-                // If this is enabled, your server must respond with the header
-                // 'Access-Control-Allow-Credentials: true'.
-                withCredentials: false
-            },
-
-            headers: {
-                // Set any custom headers here.
-                // If you set any non-simple headers, your server must include these
-                // headers in the 'Access-Control-Allow-Headers' response header.
-            },
-
-            success: function(msg) {
-                // Here's where you handle a successful response.
-                // console.log(countryId +" "+" " + randomCat + " " + msg);
-                console.log(randomCat + msg);
-            },
-
-            error: function() {
-                // Here's where you handle an error response.
-                // Note that if the error was due to a CORS issue,
-                // this function will still fire, but there won't be any additional
-                // information about the error.
-                alert("service unavailable at this time");
+        // Creating the markup inside the container
+        $.each(['Days','Hours','Minutes','Seconds'],function(i){
+            $('<span class="count'+this+'">').html(
+                '<span class="position">\
+                    <span class="digit static">0</span>\
+                </span>\
+                <span class="position">\
+                    <span class="digit static">0</span>\
+                </span>'
+            ).appendTo(elem);
+            
+            if(this!="Seconds"){
+                elem.append('<span class="countDiv countDiv'+i+'"></span>');
             }
         });
-    };
+
+    }
+
+    // Creates an animated transition between the two numbers
+    function switchDigit(position,number){
+        
+        var digit = position.find('.digit')
+        
+        if(digit.is(':animated')){
+            return false;
+        }
+        
+        if(position.data('digit') == number){
+            // We are already showing this number
+            return false;
+        }
+        
+        position.data('digit', number);
+        
+        var replacement = $('<span>',{
+            'class':'digit',
+            css:{
+                top:'-2.1em',
+                opacity:0
+            },
+            html:number
+        });
+        
+        // The .static class is added when the animation
+        // completes. This makes it run smoother.
+        
+        digit
+            .before(replacement)
+            .removeClass('static')
+            .animate({top:'2.5em',opacity:0},'fast',function(){
+                digit.remove();
+            })
+
+        replacement
+            .delay(100)
+            .animate({top:0,opacity:1},'fast',function(){
+                replacement.addClass('static');
+            });
+    }
+
+})(jQuery);
 
     $(function() {
 
@@ -429,7 +590,7 @@ $(document).ready(function() {
                 // globalHours=hours;
                 // globalMinutes=minutes;
                 // globalSeconds=seconds;
-console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
+// console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
                 note.html(message);
             }
         });
@@ -448,7 +609,7 @@ console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
     function displayCluePic() {
 
         //array to add secondary tags to location images
-        var subTags = ["skyline", "landmarks", "buildings", "history", "flags", "sports", "attractions", "people"];
+        var subTags = ["skyline", "park", "art", "food", "festival", "landmark"];
         //generates a random index value for the subTags array
         var j = (Math.floor(Math.random() * subTags.length));
         console.log("j:" + j);
@@ -456,13 +617,17 @@ console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
         var key = "&api_key=ba1d8158e0ea3d52d7706e412bca51af";
         // var apiSig = "&api_sig=e44b1e327a5cb3ab2f0d0386acc95e9a";
         var format = "&format=json&nojsoncallback=1";
+        var lat = carlosStart.location[1];
+   var long = carlosStart.location[0];
+    var coordinates = "&lat=" + lat + "&lon=" + long;
+    console.log("coordinates : " + coordinates);
 
         var radius = "&radius=20+%28km%29";
-        var tags = "&tags=+" + mark + "+" + subTags[j];
+        var tags = "&tags=" + subTags[j]; //+" + carlosStart.city + "+" +
         console.log("tags: " + tags);
         //query url
-        var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + radius + format;
-
+var queryUrl = //"https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + radius + format;
+    "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + coordinates + format;
 
         $.ajax({
                 url: queryUrl,
@@ -494,8 +659,7 @@ console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
                 clueImage = imageUrl;
 
                 // creates a html tag for the image hint to be stored in clues
-                var imgHint = $("<img style ='height: 180px; width: 180px;' >");
-                imgHint.attr("src", imageUrl);
+var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                imgHint.attr("src", imageUrl);
                 imgHint.addClass("currentImg");
                 imgHint.addClass("img-rounded");
                 // appends the image hint to the div with class insideRight
@@ -515,13 +679,13 @@ console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
         if (clueImage !== "" && clueImage !== prevSrc) {
             $(".currentImg").remove();
             // creates a html tag for the image hint to be stored in previous clues
-            var prevImgHint = $("<img style ='height: 72px; width: 72px; margin: 5px;' >");
+            var prevImgHint = $("<img style ='height: 40px; width: 40px; margin: 5px;' >");
             prevImgHint.attr("src", clueImage);
             prevImgHint.addClass("prevImg");
             prevImgHint.addClass("img-rounded zoom");
             prevSrc = clueImage;
             console.log("Prev Src : " + prevSrc);
-            $(".insideRight").append(prevImgHint);
+            $("#imgClue").append(prevImgHint);
             $(".prevImg").prepend(prevImgHint);
             console.log("clues" + clueImage);
         }
