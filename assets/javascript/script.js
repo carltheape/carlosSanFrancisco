@@ -404,8 +404,11 @@ $(document).ready(function() {
     // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
     $(".marker").css('cursor', 'pointer');
     //this is the code that will send a query for the type of data to wolfram alpha for a given country...
+var factTable = [];
+    //this is the code that will send a query for the type of data to wolfram alpha for a given country...
        function displayCountryInfo() {
-        var queryURL = "https://raw.githubusercontent.com/opendatajson/factbook.json/master/"+ $(this).data('continent')+"/"+$(this).data('code')+".json";
+        var queryURL = "https://raw.githubusercontent.com/opendatajson/factbook.json/master/"+ carlosStart.continent+"/"+carlosStart.code+".json";
+
 
 
         $.ajax({
@@ -415,8 +418,50 @@ $(document).ready(function() {
           calling = response;
           var obj = JSON.parse(response);
           console.log(obj);
+          factTable.push("This country's main Agriculture Products are: " + obj.Economy["Agriculture - products"].text);
+          factTable.push("Annual Spending for this country is: " + obj.Economy.Budget.expenditures.text);
+          factTable.push("This country's annual surplus or deficit is: " + obj.Economy["Budget surplus (+) or deficit (-)"].text);
+          factTable.push("This country is in debt for: " + obj.Economy["Debt - external"].text);
+          factTable.push("This country's major exports are: " + obj.Economy["Exports - commodities"].text);
+          factTable.push("This country's major export partners are: " + obj.Economy["Exports - partners"].text);
+          factTable.push("This country's GDP is: " + obj.Economy["GDP (official exchange rate)"].text);
+          factTable.push("This country's GDP per capita is: " + obj.Economy["GDP - per capita (PPP)"].text);
+          factTable.push("This country's major imports are: " + obj.Economy["Imports - commodities"].text);
+          factTable.push("This country's major import partners are: " + obj.Economy["Imports - partners"].text);
+          factTable.push("This country's major industries are: " + obj.Economy.Industries.text);
+          factTable.push("The percentage of this country's population that are in poverty is: " + obj.Economy["Population below poverty line"].text);
+          factTable.push("The percentage of this country's population that are unemployed is: " + obj.Economy["Unemployment rate"].text);
+          factTable.push("The total size of this country is: " + obj.Geography.Area.land.text);
+          factTable.push("The size of this country is about: " + obj.Geography["Area - comparative"].text);
+          factTable.push("This country's average elevation is: " + obj.Geography.Elevation["mean elevation"].text);
+          factTable.push("This country's natural disasters include: " + obj.Geography["Natural hazards"].text);
+          factTable.push("This country's natural resources include: " + obj.Geography["Natural resources"].text);
+          factTable.push("This country's flag looks like: " + obj.Government["Flag description"].text);
+          factTable.push("This country's Government is considered a: " + obj.Government["Government type"].text);
+          factTable.push("This country became independant in: " + obj.Government.Independence.text);
+          factTable.push("This country's National Anthem is called: " + obj.Government["National anthem"].name.text);
+          factTable.push("The symbols for this country are: " + obj.Government["National symbol(s)"].text);
+          factTable.push("The birthrate for this country is: " + obj["People and Society"]["Birth rate"].text);
+          factTable.push("The deathrate for this country is: " + obj["People and Society"]["Death rate"].text);
+          factTable.push("The amount this country spends on education is: " + obj["People and Society"]["Education expenditures"].text);
+          factTable.push("The amount this country spends on healthcare is: " + obj["People and Society"]["Health expenditures"].text);
+          factTable.push("The infant mortality rate for this country is: " + obj["People and Society"]["Infant mortality rate"].total.text);
+          factTable.push("The average life expectancy for this country is: " + obj["People and Society"]["Life expectancy at birth"]["total population"].text);
+        factTable.push("The obesity rate for this country is: " + obj["People and Society"]["Obesity - adult prevalence rate"].text);
+        factTable.push("The population for this country is: " + obj["People and Society"].Population.text);
+        factTable.push("The major religions for this country are: " + obj["People and Society"].Religions.text);
+        factTable.push("The sex ratio for this country is: " + obj["People and Society"]["Sex ratio"]["total population"].text);
+        factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
+        factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
+        factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
+        console.log(factTable);
       });
     };
+
+
+
+
+displayCountryInfo();
 
     (function($){
     
@@ -756,6 +801,18 @@ var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");        
             // }
             // else{alert("you missed him!")}
     });
+
+    function getFact(){
+ var fact = factTable[Math.floor(Math.random() * places.length)]
+ console.log(fact);
+ var i=factTable.indexOf(fact);
+ factTable.splice(fact,1);
+ console.log(factTable);
+};
+
+$(".fact").click(function(){
+        getFact();
+    }); 
     /*
      * jQuery Animate From To plugin 1.0
      *
