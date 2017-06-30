@@ -265,8 +265,8 @@ $(document).ready(function() {
     var lastLoc = startingCity;
     var lastLatLon = startingLatLon;
 
-    // var globalDays = '';
-    // var globalHours = '';
+    var globalClock = '';
+    var globalTravel = '';
     // var globalMinutes = '';
     // var globalSeconds = '';
     //sets up the mapbox access...
@@ -342,6 +342,7 @@ $(document).ready(function() {
             var timeM = timeH * 60;
             // console.log(timeM + "minutes");
             var timeS = timeM * 60;
+            globalClock = globalClock-(timeS*1000);
             // console.log(timeS + "seconds");
 
             // calculate (and subtract) whole days
@@ -488,7 +489,11 @@ displayCountryInfo();
         (function tick(){
             
             // Time left
-            left = Math.floor((options.timestamp - (new Date())) / 1000);
+            left = Math.floor((globalClock - (new Date())) / 1000);
+            // globalClock = left;
+
+            // console.log(new Date() / 1000);
+            console.log(globalClock);
             
             if(left < 0){
                 left = 0;
@@ -607,11 +612,13 @@ displayCountryInfo();
             // The new year is here! Count towards something else.
             // Notice the *1000 at the end - time must be in milliseconds
             ts = (new Date()).getTime() + 7 * 24 * 60 * 60 * 1000;
+            globalClock = ts;
 
         }
 
         $('#timer').countdown({
             timestamp: ts,
+
             callback: function(days, hours, minutes, seconds) {
 
                 // days=globalDays;

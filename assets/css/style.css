@@ -425,7 +425,10 @@ span {
   margin-bottom: 20px;
 }
 
-
+.prevImage{
+  z-index: 1000;
+  position: absolute;
+}
 
 
 /*#carlos{
