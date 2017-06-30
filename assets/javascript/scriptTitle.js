@@ -23,9 +23,13 @@ $('.sound').click(function() {
     $(".button1").click(function(){
         $(".titlePage").toggleClass("main");
         $(".test1").toggleClass("test2");
-        $('.bottom').append('<button class="btn btn-default"><a href="easy.html">Easy</a></button>');
-        $('.bottom').append('<button class="btn btn-default"><a href="medium.html">Medium</a></button>');
-        $('.bottom').append('<button class="btn btn-default"><a href="hard.html">Hard</a></button>');
+        $('.bottom').append('<a href="easy.html" class="button1 btn btn-default">Easy</a>');
+        $('.bottom').append('<a href="medium.html" class="button1 btn btn-default">Medium</a>');
+        $('.bottom').append('<a href="hard.html" class="button1 btn btn-default">Hard</a>');
+
+        //$('.bottom').append('<button class="btn btn-default"><a href="easy.html">Easy</a></button>');
+        //$('.bottom').append('<button class="btn btn-default"><a href="medium.html">Medium</a></button>');
+        //$('.bottom').append('<button class="btn btn-default"><a href="hard.html">Hard</a></button>');
         $(this).remove();
         
     });
