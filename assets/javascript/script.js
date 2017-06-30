@@ -597,8 +597,14 @@ $(document).ready(function() {
 
     });
 
+    /////////////////////////////////////////////////////////////////
+    //////////////FLICR API CALLS/Displaying Clues///////////////////
+    /////////////////////////////////////////////////////////////////
+
     var mark = "";
     var clueImage = "";
+     //used to increment count of clues
+    var clueCount = 0;
 
     $(".search").on("click", function() {
         mark = $(this).attr("data-name");
@@ -667,8 +673,12 @@ $(document).ready(function() {
                 imgHint.addClass("img-rounded");
                 // appends the image hint to the div with class insideRight
                 $(".insideLeft").append(imgHint);
+                clueCount++;
+                console.log("Clues :" + clueCount);
             }else{
                 coordinateTagsOnly();
+                clueCount++;
+                console.log("Clues :" + clueCount);
             }
 
             
@@ -730,10 +740,20 @@ $(document).ready(function() {
     };
 
 
-    //used to increment count of id to prev clues
-    var count = 0;
+   
     //stores prev source to avoid duplicated prev clues
     var prevSrc = "";
+
+    function alternateClues(){
+        //compareDist //distance to carlos
+        //lastCompareDist// previous distance to Carlos
+        if(clueCount % 2 == 0){
+            displayCluePic();
+        }else{
+           //display fact clue 
+           displayCountryInfo();
+        };
+    };
 
 
     function moveCluePic() {
@@ -752,6 +772,10 @@ $(document).ready(function() {
             console.log("clues" + clueImage);
         }
     };
+
+    /////////////////////////////////////////////////////////////////
+    //////////////END FLICR API CALLS/Displaying Clues///////////////
+    /////////////////////////////////////////////////////////////////    
 
     //this is the code that make carlos appear, only if you are close enough to see him...
     map.on('zoom', function(e) {
