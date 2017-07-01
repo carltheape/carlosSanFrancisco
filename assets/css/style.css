@@ -281,19 +281,19 @@ give gallery's parent container a cursor: pointer.**/
 .css-typing p{
   font-family: "Courier";
   font-size: 14px;
-  width: 50em;
+  width: 78em;
   white-space: nowrap;
   overflow: hidden;
-  -webkit-animation: type 5s steps(40, end);
-  animation: type 5s steps(40, end);
+  -webkit-animation: type 5s steps(300, end);
+  animation: type 5s steps(300, end);
 }
 
 .css-typing p:nth-child(2) {
   white-space: nowrap;
   overflow: hidden;
   opacity: 0;
-  -webkit-animation: type 5s steps(40, end);
-  animation: type2 5s steps(40, end);
+  -webkit-animation: type 5s steps(300, end);
+  animation: type2 5s steps(300, end);
   -webkit-animation-delay: 5s;
   animation-delay: 5s;
   -webkit-animation-fill-mode: forwards;
@@ -304,8 +304,8 @@ give gallery's parent container a cursor: pointer.**/
   white-space: nowrap;
   overflow: hidden;
   opacity: 0;
-  -webkit-animation: type 5s steps(40, end);
-  animation: type3 5s steps(40, end);
+  -webkit-animation: type 5s steps(300, end);
+  animation: type3 5s steps(300, end);
   -webkit-animation-delay: 10s;
   animation-delay: 10s;
   -webkit-animation-fill-mode: forwards;
