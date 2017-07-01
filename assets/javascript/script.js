@@ -491,7 +491,7 @@ displayCountryInfo();
             // Time left
             left = Math.floor((globalClock - (new Date())) / 1000);
             score =left;
-            console.log(score);
+            // console.log(score);
 
 
             // console.log(new Date() / 1000);
@@ -808,7 +808,7 @@ displayCountryInfo();
         if (clueImage !== "" && clueImage !== prevSrc) {
             $(".currentImg").remove();
             // creates a html tag for the image hint to be stored in previous clues
-            var prevImgHint = $("<img style ='height: 40px; width: 40px; margin: 5px;' >");
+            var prevImgHint = $("<img style ='height: 40%; width: 40%; margin: 5px;' >");
             prevImgHint.attr("src", clueImage);
             prevImgHint.addClass("prevImg");
             prevImgHint.addClass("img-rounded zoom");
@@ -819,6 +819,7 @@ displayCountryInfo();
             console.log("clues" + clueImage);
         }
     };
+
 
     /////////////////////////////////////////////////////////////////
     //////////////END FLICR API CALLS/Displaying Clues///////////////
@@ -890,6 +891,16 @@ displayCountryInfo();
             // }
             // else{alert("you missed him!")}
     });
+
+
+      $(".prevImg").hover(function() {
+  //   $('#right').css({'overflow':'visible'});
+    alert("HOVER!");
+  // }, function() {
+  //   // on mouseout, reset the background colour
+  //   $('#right').css({'overflow':'auto'});
+  });
+
 
     function getFact(){
  var fact = factTable[Math.floor(Math.random() * places.length)]
