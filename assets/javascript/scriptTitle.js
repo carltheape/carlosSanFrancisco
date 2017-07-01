@@ -18,7 +18,7 @@ $('.sound').click(function() {
     $(".button1").click(function(){
         $(".titlePage").toggleClass("main");
         $(".test1").toggleClass("test2");
-        $('.bottom').append('<button class="btn btn-default"><a href="index.html">Play Game</a></button>');
+        $('.bottom').append('<a href="index.html" class="button1 btn btn-default">Collect Assignment</a>');
         $(this).remove();
     });
 

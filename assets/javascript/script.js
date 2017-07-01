@@ -266,9 +266,8 @@ $(document).ready(function() {
     var lastLatLon = startingLatLon;
 
     var globalClock = '';
-    var globalTravel = '';
-    // var globalMinutes = '';
-    // var globalSeconds = '';
+    var score =1;
+    var caught = false;
     //sets up the mapbox access...
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybHRoZWFwZSIsImEiOiJjajN6NGMybTQwMDB2MzJuMWdzZm12b3QwIn0.PP7mPZA5HjlHME4HiUQEPg';
     var map = new mapboxgl.Map({
@@ -343,6 +342,7 @@ $(document).ready(function() {
             // console.log(timeM + "minutes");
             var timeS = timeM * 60;
             globalClock = globalClock-(timeS*1000);
+
             // console.log(timeS + "seconds");
 
             // calculate (and subtract) whole days
@@ -364,9 +364,8 @@ $(document).ready(function() {
             var secondsS = Math.floor(timeS % 60); // in theory the modulus is not required
             var travelTime = daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS) + ("seconds to travel");
             console.log(travelTime);
-            // globalHours = globalHours-hoursS; if (globalHours < 0){globalDays=globalDays-1; globalHours = 24+globalHours};
-            // globalMinutes = globalminutes-minutesS; if (globalMinutes < 0){globalHours=globalHours-1; globalMinutes = 60+globalMinutes};
-            // globalSeconds = globalSeconds-secondS; if (globalSeconds < 0){globalMinutes=globalMinutes-1; globalSeconds = 60+globalHours};
+
+
 
 
         });
@@ -455,7 +454,7 @@ var factTable = [];
         factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
         factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
         factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
-        console.log(factTable);
+        // console.log(factTable);
       });
     };
 
@@ -487,13 +486,16 @@ displayCountryInfo();
         positions = this.find('.position');
         
         (function tick(){
-            
+            if(caught == true){return};
+            if (score>0){
             // Time left
             left = Math.floor((globalClock - (new Date())) / 1000);
-            // globalClock = left;
+            score =left;
+            console.log(score);
+
 
             // console.log(new Date() / 1000);
-            console.log(globalClock);
+            // console.log(globalClock);
             
             if(left < 0){
                 left = 0;
@@ -522,7 +524,9 @@ displayCountryInfo();
             options.callback(d, h, m, s);
             
             // Scheduling another call of this function in 1s
-            setTimeout(tick, 1000);
+            setTimeout(tick, 1000);}
+            else{alert("Carlos got away!"); return};
+            
         })();
         
         // This function updates two digit positions at once
@@ -621,28 +625,19 @@ displayCountryInfo();
 
             callback: function(days, hours, minutes, seconds) {
 
-                // days=globalDays;
-                // hours=globalHours;
-                // minutes=globalMinutes;
-                // seconds=globalSeconds;
-
                 var message = "";
 
                 message += days + " day" + (days == 1 ? '' : 's') + ", ";
-                // globalDays=days;
+
                 message += hours + " hour" + (hours == 1 ? '' : 's') + ", ";
-                // globalHours=hours;
+
                 message += minutes + " minute" + (minutes == 1 ? '' : 's') + " and ";
-                // globalMinutes = minutes;
+
                 message += seconds + " second" + (seconds == 1 ? '' : 's') + " <br />";
-                // globalSeconds = seconds;
+
                 message += "left to catch Carlos San Francisco!";
 
-                // globalDays=days;
-                // globalHours=hours;
-                // globalMinutes=minutes;
-                // globalSeconds=seconds;
-// console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
+
                 note.html(message);
             }
         });
@@ -880,7 +875,7 @@ displayCountryInfo();
 
         // what's left is seconds
         var secondsS = Math.floor(timeS % 60); // in theory the modulus is not required
-        var newTravelTime = hoursS + (" hours ") + (minutesS) + (" minutes ") + (secondsS) + (" seconds to travel here ");
+        var newTravelTime = daysS + (" day ") + hoursS + (" hours ") + (minutesS) + (" minutes ") + (secondsS) + (" seconds to travel here ");
         // console.log("new travel time: " + newTravelTime);
         // console.log(this);
         $("h5:nth-child(2)").html(newTravelTime);
@@ -889,8 +884,9 @@ displayCountryInfo();
     //the code that will make you win...
 
     $("#carlos").on("click", function() {
-        // if (timer>0){
-        alert("you got me!")
+        if (globalClock>0){ alert("you got me!");
+        caught = true;
+        console.log("your score is: "+score)};
             // }
             // else{alert("you missed him!")}
     });
