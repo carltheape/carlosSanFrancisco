@@ -897,8 +897,6 @@ displayCountryInfo();
             // else{alert("you missed him!")}
     });
 
-<<<<<<< HEAD
-
       $(".prevImg").hover(function() {
   //   $('#right').css({'overflow':'visible'});
     alert("HOVER!");
@@ -908,13 +906,12 @@ displayCountryInfo();
   });
 
 
-=======
+
     // global variables used in getFact() and moveFact()
     var textClue = "";
     var prevTextHint = "";
 
     //displays the current fact in the Clue box
->>>>>>> 1f1a29a81a5693b7221e59bee1fd4c4072b057cb
     function getFact(){
          var fact = factTable[Math.floor(Math.random() * places.length)]
          console.log(fact);
