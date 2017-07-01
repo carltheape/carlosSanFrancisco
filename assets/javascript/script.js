@@ -447,14 +447,14 @@ var factTable = [];
           factTable.push("The amount this country spends on healthcare is: " + obj["People and Society"]["Health expenditures"].text);
           factTable.push("The infant mortality rate for this country is: " + obj["People and Society"]["Infant mortality rate"].total.text);
           factTable.push("The average life expectancy for this country is: " + obj["People and Society"]["Life expectancy at birth"]["total population"].text);
-        factTable.push("The obesity rate for this country is: " + obj["People and Society"]["Obesity - adult prevalence rate"].text);
-        factTable.push("The population for this country is: " + obj["People and Society"].Population.text);
-        factTable.push("The major religions for this country are: " + obj["People and Society"].Religions.text);
-        factTable.push("The sex ratio for this country is: " + obj["People and Society"]["Sex ratio"]["total population"].text);
-        factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
-        factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
-        factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
-        console.log(factTable);
+          factTable.push("The obesity rate for this country is: " + obj["People and Society"]["Obesity - adult prevalence rate"].text);
+          factTable.push("The population for this country is: " + obj["People and Society"].Population.text);
+          factTable.push("The major religions for this country are: " + obj["People and Society"].Religions.text);
+          factTable.push("The sex ratio for this country is: " + obj["People and Society"]["Sex ratio"]["total population"].text);
+          factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
+          factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
+          factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
+          console.log("fact table :" + factTable);
       });
     };
 
@@ -648,12 +648,12 @@ displayCountryInfo();
 
     var mark = "";
     var clueImage = "";
-     //used to increment count of clues
+     //used to increment count of clues in alternateClues()
     var clueCount = 0;
 
     $(".search").on("click", function() {
         mark = $(this).attr("data-name");
-        displayCluePic();
+        alternateClues();
         moveCluePic();
     });
 
@@ -679,6 +679,7 @@ displayCountryInfo();
         console.log("tags: " + tags);
         //query url
         var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + coordinates + format;
+        moveFact();
 
         $.ajax({
                 url: queryUrl,
@@ -718,11 +719,11 @@ displayCountryInfo();
                 imgHint.addClass("img-rounded");
                 // appends the image hint to the div with class insideRight
                 $(".insideLeft").append(imgHint);
-                clueCount++;
+                // clueCount++;
                 console.log("Clues :" + clueCount);
             }else{
                 coordinateTagsOnly();
-                clueCount++;
+                // clueCount++;
                 console.log("Clues :" + clueCount);
             }
 
@@ -743,7 +744,8 @@ displayCountryInfo();
         console.log("coordinates : " + coordinates);
         //query url
         var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + coordinates + format;    
-         
+        moveFact();
+
          $.ajax({
                 url: queryUrl,
                 method: "GET"
@@ -794,9 +796,10 @@ displayCountryInfo();
         //lastCompareDist// previous distance to Carlos
         if(clueCount % 2 == 0){
             displayCluePic();
+            clueCount++;
         }else{
-           //display fact clue 
-           displayCountryInfo();
+            getFact();
+            clueCount++;
         };
     };
 
@@ -888,16 +891,35 @@ displayCountryInfo();
             // else{alert("you missed him!")}
     });
 
+    // global variables used in getFact() and moveFact()
+    var textClue = "";
+    var prevTextHint = "";
+
+    //displays the current fact in the Clue box
     function getFact(){
- var fact = factTable[Math.floor(Math.random() * places.length)]
- console.log(fact);
- var i=factTable.indexOf(fact);
- factTable.splice(fact,1);
- console.log(factTable);
-};
+         var fact = factTable[Math.floor(Math.random() * places.length)]
+         console.log(fact);
+         var i=factTable.indexOf(fact);
+         factTable.splice(fact,1);
+         console.log(factTable);
+         // var textHint = $("<p>");
+         // textHint.
+         textClue = fact;
+         $(".insideLeft").append("<p class='currentFact'>" + fact + "</p>");
+    };
+
+    //moves the current fact to previous clues under text clues
+    function moveFact() {
+        if(textClue !== "" && textClue !== prevTextHint) {
+            prevTextHint = textClue;
+            $(".currentFact").remove();
+            $("#textClue").append("<p class='prevFact'>" + prevTextHint + "</p>");
+        };
+    };
 
 $(".fact").click(function(){
         getFact();
+        moveFact();
     }); 
     /*
      * jQuery Animate From To plugin 1.0
