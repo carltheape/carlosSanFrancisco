@@ -268,6 +268,127 @@ $(document).ready(function() {
     var globalClock = '';
     var score =1;
     var caught = false;
+
+    $('#newsHeadline').append(startingLoc.country);
+    console.log(startingLoc.country);
+
+
+    ( function( window ) {
+
+'use strict';
+
+// class helper functions from bonzo https://github.com/ded/bonzo
+
+function classReg( className ) {
+  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+}
+
+// classList support for class management
+// altho to be fair, the api sucks because it won't accept multiple classes at once
+var hasClass, addClass, removeClass;
+
+if ( 'classList' in document.documentElement ) {
+  hasClass = function( elem, c ) {
+    return elem.classList.contains( c );
+  };
+  addClass = function( elem, c ) {
+    elem.classList.add( c );
+  };
+  removeClass = function( elem, c ) {
+    elem.classList.remove( c );
+  };
+}
+else {
+  hasClass = function( elem, c ) {
+    return classReg( c ).test( elem.className );
+  };
+  addClass = function( elem, c ) {
+    if ( !hasClass( elem, c ) ) {
+      elem.className = elem.className + ' ' + c;
+    }
+  };
+  removeClass = function( elem, c ) {
+    elem.className = elem.className.replace( classReg( c ), ' ' );
+  };
+}
+
+function toggleClass( elem, c ) {
+  var fn = hasClass( elem, c ) ? removeClass : addClass;
+  fn( elem, c );
+}
+
+var classie = {
+  // full names
+  hasClass: hasClass,
+  addClass: addClass,
+  removeClass: removeClass,
+  toggleClass: toggleClass,
+  // short names
+  has: hasClass,
+  add: addClass,
+  remove: removeClass,
+  toggle: toggleClass
+};
+
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( classie );
+} else {
+  // browser global
+  window.classie = classie;
+}
+
+})( window );
+
+    var ModalEffects = (function() {
+
+    function init() {
+
+        var overlay = document.querySelector( '.md-overlay' );
+
+        [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
+
+            var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
+                close = modal.querySelector( '.md-close' );
+
+            function removeModal( hasPerspective ) {
+                classie.remove( modal, 'md-show' );
+
+                if( hasPerspective ) {
+                    classie.remove( document.documentElement, 'md-perspective' );
+                }
+            }
+
+            function removeModalHandler() {
+                removeModal( classie.has( el, 'md-setperspective' ) ); 
+            }
+
+            window.addEventListener( 'load', function( ev ) {
+
+                classie.add( modal, 'md-show' );
+                // overlay.removeEventListener( 'click', removeModalHandler );
+                // overlay.addEventListener( 'click', removeModalHandler );
+
+                if( classie.has( el, 'md-setperspective' ) ) {
+                    setTimeout( function() {
+                        classie.add( document.documentElement, 'md-perspective' );
+                    }, 25 );
+                }
+            });
+
+            close.addEventListener( 'click', function( ev ) {
+                ev.stopPropagation();
+                removeModalHandler();
+            });
+
+        } );
+
+    }
+
+    init();
+
+})();
     //sets up the mapbox access...
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybHRoZWFwZSIsImEiOiJjajN6NGMybTQwMDB2MzJuMWdzZm12b3QwIn0.PP7mPZA5HjlHME4HiUQEPg';
     var map = new mapboxgl.Map({
@@ -384,21 +505,21 @@ $(document).ready(function() {
     var carl = document.createElement('div');
     carl.id = 'carlos';
     carl.innerHTML = " ";
-    carl.style.backgroundImage = 'url(assets/images/Devil.gif)';
+    carl.style.backgroundImage = 'url(assets/images/spy.gif)';
     carl.style.width = 20 + 'px';
     carl.style.height = 20 + 'px';
     carl.style.backgroundSize = 'cover';
     carl.style.backgroundRepeat = "no-repeat";
     var plsMns = Math.round(Math.random()) * 2 - 1; //+ or Minus
     console.log(plsMns);
-    var space = (Math.random() * (0 - 0.1) + 0.1) * plsMns; //make a random movement
+    var space = (Math.random() * (0 - 0.05) + 0.05) * plsMns; //make a random movement
     console.log(space);
     //puts carlos on the map offsetting him by a random amount but within certain bounds of his starting location...
     new mapboxgl.Marker(carl, { offset: [-20 / 2, -20 / 2] })
         .setLngLat([carlosStart.location[0] + space, carlosStart.location[1] + space])
         .addTo(map);
     //starts you in a location
-    alert("Carlos San Francisco has committed a crime in " + startingCity.replace(/_/g, ' ') + "," + startingCountry);
+    // alert("Carlos San Francisco has committed a crime in " + startingCity.replace(/_/g, ' ') + "," + startingCountry);
     $('.' + startingCity).css('background-image', 'url(assets/images/Red_Arrow_Down.svg)');
 
     // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
@@ -837,7 +958,7 @@ displayCountryInfo();
         // console.log(map.getZoom());
         var carlos = document.getElementById("carlos");
         // console.log(carlos);
-        if (zoom >= 10) { carlos.style.display = 'block' } else { carlos.style.display = 'none' };
+        if (zoom >= 12) { carlos.style.display = 'block' } else { carlos.style.display = 'none' };
 
 
     });
@@ -1082,5 +1203,6 @@ $(".fact").click(function(){
 
 
     });
+
 
 }); //document ready brackets
