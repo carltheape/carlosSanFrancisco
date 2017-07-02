@@ -266,9 +266,8 @@ $(document).ready(function() {
     var lastLatLon = startingLatLon;
 
     var globalClock = '';
-    var globalTravel = '';
-    // var globalMinutes = '';
-    // var globalSeconds = '';
+    var score =1;
+    var caught = false;
     //sets up the mapbox access...
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybHRoZWFwZSIsImEiOiJjajN6NGMybTQwMDB2MzJuMWdzZm12b3QwIn0.PP7mPZA5HjlHME4HiUQEPg';
     var map = new mapboxgl.Map({
@@ -343,6 +342,7 @@ $(document).ready(function() {
             // console.log(timeM + "minutes");
             var timeS = timeM * 60;
             globalClock = globalClock-(timeS*1000);
+
             // console.log(timeS + "seconds");
 
             // calculate (and subtract) whole days
@@ -364,9 +364,8 @@ $(document).ready(function() {
             var secondsS = Math.floor(timeS % 60); // in theory the modulus is not required
             var travelTime = daysS + ("days") + hoursS + ("hours") + (minutesS) + ("minutes") + (secondsS) + ("seconds to travel");
             console.log(travelTime);
-            // globalHours = globalHours-hoursS; if (globalHours < 0){globalDays=globalDays-1; globalHours = 24+globalHours};
-            // globalMinutes = globalminutes-minutesS; if (globalMinutes < 0){globalHours=globalHours-1; globalMinutes = 60+globalMinutes};
-            // globalSeconds = globalSeconds-secondS; if (globalSeconds < 0){globalMinutes=globalMinutes-1; globalSeconds = 60+globalHours};
+
+
 
 
         });
@@ -448,14 +447,16 @@ var factTable = [];
           factTable.push("The amount this country spends on healthcare is: " + obj["People and Society"]["Health expenditures"].text);
           factTable.push("The infant mortality rate for this country is: " + obj["People and Society"]["Infant mortality rate"].total.text);
           factTable.push("The average life expectancy for this country is: " + obj["People and Society"]["Life expectancy at birth"]["total population"].text);
-        factTable.push("The obesity rate for this country is: " + obj["People and Society"]["Obesity - adult prevalence rate"].text);
-        factTable.push("The population for this country is: " + obj["People and Society"].Population.text);
-        factTable.push("The major religions for this country are: " + obj["People and Society"].Religions.text);
-        factTable.push("The sex ratio for this country is: " + obj["People and Society"]["Sex ratio"]["total population"].text);
-        factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
-        factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
-        factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
-        console.log(factTable);
+
+          factTable.push("The obesity rate for this country is: " + obj["People and Society"]["Obesity - adult prevalence rate"].text);
+          factTable.push("The population for this country is: " + obj["People and Society"].Population.text);
+          factTable.push("The major religions for this country are: " + obj["People and Society"].Religions.text);
+          factTable.push("The sex ratio for this country is: " + obj["People and Society"]["Sex ratio"]["total population"].text);
+          factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
+          factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
+          factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
+          // console.log(factTable);
+
       });
     };
 
@@ -487,13 +488,16 @@ displayCountryInfo();
         positions = this.find('.position');
         
         (function tick(){
-            
+            if(caught == true){return};
+            if (score>0){
             // Time left
             left = Math.floor((globalClock - (new Date())) / 1000);
-            // globalClock = left;
+            score =left;
+            // console.log(score);
+
 
             // console.log(new Date() / 1000);
-            console.log(globalClock);
+            // console.log(globalClock);
             
             if(left < 0){
                 left = 0;
@@ -522,7 +526,9 @@ displayCountryInfo();
             options.callback(d, h, m, s);
             
             // Scheduling another call of this function in 1s
-            setTimeout(tick, 1000);
+            setTimeout(tick, 1000);}
+            else{alert("Carlos got away!"); return};
+            
         })();
         
         // This function updates two digit positions at once
@@ -621,28 +627,19 @@ displayCountryInfo();
 
             callback: function(days, hours, minutes, seconds) {
 
-                // days=globalDays;
-                // hours=globalHours;
-                // minutes=globalMinutes;
-                // seconds=globalSeconds;
-
                 var message = "";
 
                 message += days + " day" + (days == 1 ? '' : 's') + ", ";
-                // globalDays=days;
+
                 message += hours + " hour" + (hours == 1 ? '' : 's') + ", ";
-                // globalHours=hours;
+
                 message += minutes + " minute" + (minutes == 1 ? '' : 's') + " and ";
-                // globalMinutes = minutes;
+
                 message += seconds + " second" + (seconds == 1 ? '' : 's') + " <br />";
-                // globalSeconds = seconds;
+
                 message += "left to catch Carlos San Francisco!";
 
-                // globalDays=days;
-                // globalHours=hours;
-                // globalMinutes=minutes;
-                // globalSeconds=seconds;
-// console.log("days"+days+"hours"+hours+"mintues"+minutes+"seconds"+seconds);
+
                 note.html(message);
             }
         });
@@ -655,12 +652,12 @@ displayCountryInfo();
 
     var mark = "";
     var clueImage = "";
-     //used to increment count of clues
+     //used to increment count of clues in alternateClues()
     var clueCount = 0;
 
     $(".search").on("click", function() {
         mark = $(this).attr("data-name");
-        displayCluePic();
+        alternateClues();
         moveCluePic();
     });
 
@@ -686,6 +683,7 @@ displayCountryInfo();
         console.log("tags: " + tags);
         //query url
         var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + coordinates + format;
+        moveFact();
 
         $.ajax({
                 url: queryUrl,
@@ -725,11 +723,11 @@ displayCountryInfo();
                 imgHint.addClass("img-rounded");
                 // appends the image hint to the div with class insideRight
                 $(".insideLeft").append(imgHint);
-                clueCount++;
+                // clueCount++;
                 console.log("Clues :" + clueCount);
             }else{
                 coordinateTagsOnly();
-                clueCount++;
+                // clueCount++;
                 console.log("Clues :" + clueCount);
             }
 
@@ -750,7 +748,8 @@ displayCountryInfo();
         console.log("coordinates : " + coordinates);
         //query url
         var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + coordinates + format;    
-         
+        moveFact();
+
          $.ajax({
                 url: queryUrl,
                 method: "GET"
@@ -801,9 +800,10 @@ displayCountryInfo();
         //lastCompareDist// previous distance to Carlos
         if(clueCount % 2 == 0){
             displayCluePic();
+            clueCount++;
         }else{
-           //display fact clue 
-           displayCountryInfo();
+            getFact();
+            clueCount++;
         };
     };
 
@@ -813,7 +813,7 @@ displayCountryInfo();
         if (clueImage !== "" && clueImage !== prevSrc) {
             $(".currentImg").remove();
             // creates a html tag for the image hint to be stored in previous clues
-            var prevImgHint = $("<img style ='height: 40px; width: 40px; margin: 5px;' >");
+            var prevImgHint = $("<img style ='height: 40%; width: 40%; margin: 5px;' >");
             prevImgHint.attr("src", clueImage);
             prevImgHint.addClass("prevImg");
             prevImgHint.addClass("img-rounded zoom");
@@ -824,6 +824,7 @@ displayCountryInfo();
             console.log("clues" + clueImage);
         }
     };
+
 
     /////////////////////////////////////////////////////////////////
     //////////////END FLICR API CALLS/Displaying Clues///////////////
@@ -880,7 +881,7 @@ displayCountryInfo();
 
         // what's left is seconds
         var secondsS = Math.floor(timeS % 60); // in theory the modulus is not required
-        var newTravelTime = hoursS + (" hours ") + (minutesS) + (" minutes ") + (secondsS) + (" seconds to travel here ");
+        var newTravelTime = daysS + (" day ") + hoursS + (" hours ") + (minutesS) + (" minutes ") + (secondsS) + (" seconds to travel here ");
         // console.log("new travel time: " + newTravelTime);
         // console.log(this);
         $("h5:nth-child(2)").html(newTravelTime);
@@ -889,22 +890,52 @@ displayCountryInfo();
     //the code that will make you win...
 
     $("#carlos").on("click", function() {
-        // if (timer>0){
-        alert("you got me!")
+        if (globalClock>0){ alert("you got me!");
+        caught = true;
+        console.log("your score is: "+score)};
             // }
             // else{alert("you missed him!")}
     });
 
+      $(".prevImg").hover(function() {
+  //   $('#right').css({'overflow':'visible'});
+    alert("HOVER!");
+  // }, function() {
+  //   // on mouseout, reset the background colour
+  //   $('#right').css({'overflow':'auto'});
+  });
+
+
+
+    // global variables used in getFact() and moveFact()
+    var textClue = "";
+    var prevTextHint = "";
+
+    //displays the current fact in the Clue box
     function getFact(){
- var fact = factTable[Math.floor(Math.random() * places.length)]
- console.log(fact);
- var i=factTable.indexOf(fact);
- factTable.splice(fact,1);
- console.log(factTable);
-};
+         var fact = factTable[Math.floor(Math.random() * places.length)]
+         console.log(fact);
+         var i=factTable.indexOf(fact);
+         factTable.splice(fact,1);
+         console.log(factTable);
+         // var textHint = $("<p>");
+         // textHint.
+         textClue = fact;
+         $(".insideLeft").append("<p class='currentFact'>" + fact + "</p>");
+    };
+
+    //moves the current fact to previous clues under text clues
+    function moveFact() {
+        if(textClue !== "" && textClue !== prevTextHint) {
+            prevTextHint = textClue;
+            $(".currentFact").remove();
+            $("#textClue").append("<p class='prevFact'>" + prevTextHint + "</p>");
+        };
+    };
 
 $(".fact").click(function(){
         getFact();
+        moveFact();
     }); 
     /*
      * jQuery Animate From To plugin 1.0

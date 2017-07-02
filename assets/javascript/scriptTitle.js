@@ -18,9 +18,29 @@ $('.sound').click(function() {
     $(".button1").click(function(){
         $(".titlePage").toggleClass("main");
         $(".test1").toggleClass("test2");
-        $('.bottom').append('<button class="btn btn-default"><a href="index.html">Play Game</a></button>');
+        $('.bottom').append('<a href="index.html" class="button1 btn btn-default">Collect Assignment</a>');
         $(this).remove();
     });
+
+    var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    // var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+    // for (i = 0; i < dots.length; i++) {
+    //     dots[i].className = dots[i].className.replace(" active", "");
+    // }
+    slides[slideIndex-1].style.display = "block";  
+    // dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
 
 });
 
