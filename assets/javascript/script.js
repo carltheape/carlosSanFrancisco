@@ -450,8 +450,12 @@ if ( typeof define === 'function' && define.amd ) {
             // console.log("current Lat Long: " + currentLatLon);
             var compareDist = haversine(currentLatLon[1], currentLatLon[0], carlosStart.location[1], carlosStart.location[0]);
             var lastCompareDist = haversine(lastLatLon[1], lastLatLon[0], carlosStart.location[1], carlosStart.location[0]);
-            if(compareDist<lastCompareDist){console.log("you are on the right track!")}
-            else{console.log("the trail is getting cold...")};
+            if(compareDist<lastCompareDist) {
+                console.log("you are on the right track!");
+                alternateClues();
+            }else {
+                console.log("the trail is getting cold...")
+            };
             var isAtStart = currentLoc; //calculates the distance and time it takes to travel from one point to another...
             var end = marker.location;
             var target = isAtStart ? end : start;
@@ -776,11 +780,12 @@ displayCountryInfo();
      //used to increment count of clues in alternateClues()
     var clueCount = 0;
 
-    $(".search").on("click", function() {
-        mark = $(this).attr("data-name");
-        alternateClues();
-        moveCluePic();
-    });
+    //used during testing clues
+    // $(".search").on("click", function() {
+    //     mark = $(this).attr("data-name");
+    //     alternateClues();
+    //     // moveCluePic();
+    // });
 
     //Flickr API call with subtags
     function displayCluePic() {
@@ -923,6 +928,7 @@ displayCountryInfo();
             displayCluePic();
             clueCount++;
         }else{
+            moveCluePic();
             getFact();
             clueCount++;
         };
@@ -1034,15 +1040,13 @@ displayCountryInfo();
     var factNum = 1;
     //displays the current fact in the Clue box
     function getFact(){
-         var fact = factTable[Math.floor(Math.random() * places.length)]
-         console.log(fact);
-         var i=factTable.indexOf(fact);
-         factTable.splice(fact,1);
-         console.log(factTable);
-         // var textHint = $("<p>");
-         // textHint.
-         textClue = fact;
-         $(".insideLeft").append("<p class='currentFact'>" + fact + "</p>");
+        var fact = factTable[Math.floor(Math.random() * places.length)]
+        console.log(fact);
+        var i=factTable.indexOf(fact);
+        factTable.splice(fact,1);
+        console.log(factTable);
+        textClue = fact;
+        $(".insideLeft").append("<p class='currentFact'>" + fact + "</p>");
     };
 
     //moves the current fact to previous clues under text clues
@@ -1063,11 +1067,11 @@ displayCountryInfo();
             factNum++;
         };
     };
-
-$(".fact").click(function(){
-        getFact();
-        moveFact();
-    }); 
+//used for testing facts
+// $(".fact").click(function(){
+//         getFact();
+//         moveFact();
+//     }); 
     /*
      * jQuery Animate From To plugin 1.0
      *
