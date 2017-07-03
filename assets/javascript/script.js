@@ -679,7 +679,7 @@ displayCountryInfo();
         console.log("coordinates : " + coordinates);
 
         var radius = "&radius=20+%28km%29";
-        var tags = "&tags=" + subTags[j]; //+" + carlosStart.city + "+" +
+        var tags = "&tags=" + carlosStart.country + "+" + subTags[j]; //+" + carlosStart.city + "+" +
         console.log("tags: " + tags);
         //query url
         var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + tags + coordinates + format;
@@ -899,7 +899,7 @@ displayCountryInfo();
     // global variables used in getFact() and moveFact()
     var textClue = "";
     var prevTextHint = "";
-
+    var factNum = 1;
     //displays the current fact in the Clue box
     function getFact(){
          var fact = factTable[Math.floor(Math.random() * places.length)]
@@ -917,8 +917,18 @@ displayCountryInfo();
     function moveFact() {
         if(textClue !== "" && textClue !== prevTextHint) {
             prevTextHint = textClue;
+            var factId = "Fact" + factNum;
             $(".currentFact").remove();
-            $("#textClue").append("<p class='prevFact'>" + prevTextHint + "</p>");
+            var factAnchor = $("<a>Fact " + factNum + "</a>"+"<br>");
+            var collapseP = $("<p>");
+            factAnchor.attr("href", "#"+factId);
+            factAnchor.attr("data-toggle", "collapse");
+            collapseP.attr("id", factId);
+            collapseP.addClass("collapse");
+            collapseP.append(prevTextHint);             
+            $("#textClue").append(factAnchor);
+            $("#textClue").append(collapseP);
+            factNum++;
         };
     };
 
