@@ -780,11 +780,12 @@ displayCountryInfo();
      //used to increment count of clues in alternateClues()
     var clueCount = 0;
 
-    $(".search").on("click", function() {
-        mark = $(this).attr("data-name");
-        alternateClues();
-        // moveCluePic();
-    });
+    //used during testing clues
+    // $(".search").on("click", function() {
+    //     mark = $(this).attr("data-name");
+    //     alternateClues();
+    //     // moveCluePic();
+    // });
 
     //Flickr API call with subtags
     function displayCluePic() {
@@ -1066,11 +1067,11 @@ displayCountryInfo();
             factNum++;
         };
     };
-
-$(".fact").click(function(){
-        getFact();
-        moveFact();
-    }); 
+//used for testing facts
+// $(".fact").click(function(){
+//         getFact();
+//         moveFact();
+//     }); 
     /*
      * jQuery Animate From To plugin 1.0
      *
