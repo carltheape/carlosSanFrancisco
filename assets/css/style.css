@@ -1194,11 +1194,6 @@ background-color: #F9F4EE;
   body { font-size: 75%; }
 }
 
-#mugshot{
-  height:150px;
-  text-align: center;
-}
-
 .md-trigger{
   display: none;
 }
@@ -1323,4 +1318,15 @@ body {font-family: Verdana,sans-serif;}
 .copImage {
   height: 280px;
   margin-top: 20px;
+}
+
+#mugshot{
+  height:150px;
+  text-align: center;
+}
+
+#bars{
+  display: none;
+  height:150px;
+  text-align: center;
 }

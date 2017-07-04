@@ -1017,12 +1017,67 @@ displayCountryInfo();
     //the code that will make you win...
 
     $("#carlos").on("click", function() {
-        if (globalClock>0){ alert("you got me!");
+        if (globalClock>0){ 
+
+            $("#newsHeadline").html("Carlos San Francisco Arrested!");
+            $('#mugshot').hide();
+            $('#bars').show();
+            $("#article1").html("The notorius theif Carlos San Francisco has been apprehended thanks to the diligent work of the investigative team.");
+            $("#article2").html("lorem ipsum");
+            $("#closeBtn").html("Well Done!");
+
+
+
+                function init() {
+
+        var overlay = document.querySelector( '.md-overlay' );
+
+        [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
+
+            var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
+                close = modal.querySelector( '.md-close' );
+
+            function removeModal( hasPerspective ) {
+                classie.remove( modal, 'md-show' );
+
+                if( hasPerspective ) {
+                    classie.remove( document.documentElement, 'md-perspective' );
+                }
+            }
+
+            function removeModalHandler() {
+                removeModal( classie.has( el, 'md-setperspective' ) ); 
+            }
+
+
+
+                classie.add( modal, 'md-show' );
+                // overlay.removeEventListener( 'click', removeModalHandler );
+                // overlay.addEventListener( 'click', removeModalHandler );
+
+                if( classie.has( el, 'md-setperspective' ) ) {
+                    setTimeout( function() {
+                        classie.add( document.documentElement, 'md-perspective' );
+                    }, 25 );
+                }
+            ;
+
+            close.addEventListener( 'click', function( ev ) {
+                ev.stopPropagation();
+                removeModalHandler();
+            });
+
+        } );
+
+    }
+
+    init();
+            };
         caught = true;
-        console.log("your score is: "+score)};
+        console.log("your score is: "+score)});
             // }
             // else{alert("you missed him!")}
-    });
+    
 
       $(".prevImg").hover(function() {
   //   $('#right').css({'overflow':'visible'});
