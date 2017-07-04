@@ -17,6 +17,10 @@ body {
     background-color: #B30101;
 }
 
+p {
+  color: black;
+}
+
 
 #timer {
     text-align: center;
@@ -287,18 +291,18 @@ give gallery's parent container a cursor: pointer.**/
   width: 50em;
   white-space: nowrap;
   overflow: hidden;
-  -webkit-animation: type 5s steps(40, end);
-  animation: type 5s steps(40, end);
+-webkit-animation: type 3s steps(80, end);
+animation: type 3s steps(80, end);
 }
 
 .css-typing p:nth-child(2) {
   white-space: nowrap;
   overflow: hidden;
   opacity: 0;
-  -webkit-animation: type 5s steps(40, end);
-  animation: type2 5s steps(40, end);
-  -webkit-animation-delay: 5s;
-  animation-delay: 5s;
+  -webkit-animation: type 3s steps(80, end);
+  animation: type2 3s steps(80, end);
+  -webkit-animation-delay: 3s;
+ animation-delay: 3s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
@@ -307,10 +311,10 @@ give gallery's parent container a cursor: pointer.**/
   white-space: nowrap;
   overflow: hidden;
   opacity: 0;
-  -webkit-animation: type 5s steps(40, end);
-  animation: type3 5s steps(40, end);
-  -webkit-animation-delay: 10s;
-  animation-delay: 10s;
+  -webkit-animation: type 3s steps(80, end);
+  animation: type3 3s steps(80, end);
+  -webkit-animation-delay: 6s;
+  animation-delay: 6s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
@@ -450,11 +454,6 @@ z-index:  2147483647;
   position: absolute;
   bottom: 0;
   right: 150px;
-
-/*  bottom: 250px;
-  left: 800px;
-  height: 250px;
-*/
 }
 
 
@@ -524,7 +523,7 @@ z-index:  2147483647;
 /* Content styles */
 .md-content {
   color: #fff;
-  background: #e74c3c;
+  background-color: #F9F4EE;
   position: relative;
   border-radius: 3px;
   margin: 0 auto;
@@ -537,7 +536,7 @@ z-index:  2147483647;
   font-size: 2.4em;
   font-weight: 300;
   opacity: 1;
-  background: #faf4ee;
+background-color: #F9F4EE;
   border-radius: 3px 3px 0 0;
 }
 
@@ -545,8 +544,9 @@ z-index:  2147483647;
   padding: 15px 40px 30px;
   margin: 0;
   font-weight: 300;
-  font-size: 1.15em;
-  background-image: url("../images/newspaper.jpg");
+  font-size: 80%;
+  font-weight: bold;
+  background-color: #F9F4EE;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
@@ -555,6 +555,8 @@ z-index:  2147483647;
 .md-content > div p {
   margin: 0;
   padding: 10px 0;
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .md-content > div ul {
@@ -1282,3 +1284,43 @@ body {font-family: Verdana,sans-serif;}
 /*#carlos{
     display: none;
 }*/
+
+.border{
+  border: 8px solid black;
+}
+.round{
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+
+}
+
+.tri-right.border.right-top:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -40px;
+  top: -8px;
+  bottom: auto;
+  border: 32px solid;
+  border-color: black transparent transparent transparent;
+}
+.tri-right.right-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -20px;
+  top: 0px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: lightyellow transparent transparent transparent;
+}
+
+.copImage {
+  height: 280px;
+  margin-top: 20px;
+}
