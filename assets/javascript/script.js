@@ -509,9 +509,9 @@ if ( typeof define === 'function' && define.amd ) {
     var carl = document.createElement('div');
     carl.id = 'carlos';
     carl.innerHTML = " ";
-    carl.style.backgroundImage = 'url(assets/images/spy.gif)';
-    carl.style.width = 20 + 'px';
-    carl.style.height = 20 + 'px';
+    carl.style.backgroundImage = 'url(assets/images/spyfull.gif)';
+    carl.style.width = 30 + 'px';
+    carl.style.height = 30 + 'px';
     carl.style.backgroundSize = 'cover';
     carl.style.backgroundRepeat = "no-repeat";
     var plsMns = Math.round(Math.random()) * 2 - 1; //+ or Minus
