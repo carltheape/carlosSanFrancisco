@@ -252,15 +252,17 @@ overflow: visible;
 .zoom:focus {
 /**adjust scale to desired size, 
 add browser prefixes**/
--ms-transform: matrix(4.5, 0, 0, 4.5, 12, 0) /*scale(2.5)*/;    
--moz-transform: matrix(4.5, 0, 0, 4.5, 12, 0)/*scale(2.5)*/;  
--webkit-transform: matrix(4.5, 0, 0, 4.5, 12, 0)/*scale(2.5)*/;  
--o-transform: matrix(4.5, 0, 0, 4.5, 12, 0)/*scale(2.5)*/;  
-transform: matrix(4.5, 0, 0, 4.5, 12, 0)/*scale(2.5)*/;    
+-ms-transform: matrix(4.5, 0, 0, 4.5, 12, 62) /*scale(2.5)*/;    
+-moz-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;  
+-webkit-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;  
+-o-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;  
+transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;    
 position:relative; 
 overflow: visible;
 z-index:  2147483647;       
-
+padding-right: 2px;
+padding-bottom: 2px;
+padding-top: 2px;
 }
 
 
