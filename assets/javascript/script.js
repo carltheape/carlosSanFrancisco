@@ -1061,6 +1061,8 @@ displayCountryInfo();
             $("#closeBtn").html("Well Done!");
             modalPop();
 
+            createHSButton();
+
 
 
 
@@ -1265,6 +1267,12 @@ displayCountryInfo();
 
 
     });
+
+    function createHSButton() {
+
+        var highScore = $("<a class='btn btn-default' href='scorePage.html'>High Score</a>");
+        $(".buttonsNew").append(highScore);
+    };
 
 
 }); //document ready brackets
