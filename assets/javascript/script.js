@@ -33,6 +33,52 @@ $(document).ready(function() {
         var c = 2 * Math.asin(Math.sqrt(a));
         return R * c;
     };
+
+                function modalPop() {
+
+        var overlay = document.querySelector( '.md-overlay' );
+
+        [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
+
+            var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
+                close = modal.querySelector( '.md-close' );
+
+            function removeModal( hasPerspective ) {
+                classie.remove( modal, 'md-show' );
+
+                if( hasPerspective ) {
+                    classie.remove( document.documentElement, 'md-perspective' );
+                }
+            }
+
+            function removeModalHandler() {
+                removeModal( classie.has( el, 'md-setperspective' ) ); 
+            }
+
+
+
+                classie.add( modal, 'md-show' );
+                // overlay.removeEventListener( 'click', removeModalHandler );
+                // overlay.addEventListener( 'click', removeModalHandler );
+
+                if( classie.has( el, 'md-setperspective' ) ) {
+                    setTimeout( function() {
+                        classie.add( document.documentElement, 'md-perspective' );
+                    }, 25 );
+                }
+            ;
+
+            close.addEventListener( 'click', function( ev ) {
+                ev.stopPropagation();
+                removeModalHandler();
+            });
+
+        } );
+
+    };
+
+
+
     //all our locations...
     var places = [{
         city: "Beijing",
@@ -264,10 +310,10 @@ $(document).ready(function() {
     var currentLatLon = startingLatLon;
     var lastLoc = startingCity;
     var lastLatLon = startingLatLon;
-
     var globalClock = '';
     var score =1;
     var caught = false;
+    var day1 = false;
 
     $('#newsHeadline').append(startingLoc.country);
     console.log(startingLoc.country);
@@ -343,50 +389,7 @@ if ( typeof define === 'function' && define.amd ) {
 
     var ModalEffects = (function() {
 
-    function init() {
-
-        var overlay = document.querySelector( '.md-overlay' );
-
-        [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
-
-            var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
-                close = modal.querySelector( '.md-close' );
-
-            function removeModal( hasPerspective ) {
-                classie.remove( modal, 'md-show' );
-
-                if( hasPerspective ) {
-                    classie.remove( document.documentElement, 'md-perspective' );
-                }
-            }
-
-            function removeModalHandler() {
-                removeModal( classie.has( el, 'md-setperspective' ) ); 
-            }
-
-            window.addEventListener( 'load', function( ev ) {
-
-                classie.add( modal, 'md-show' );
-                // overlay.removeEventListener( 'click', removeModalHandler );
-                // overlay.addEventListener( 'click', removeModalHandler );
-
-                if( classie.has( el, 'md-setperspective' ) ) {
-                    setTimeout( function() {
-                        classie.add( document.documentElement, 'md-perspective' );
-                    }, 25 );
-                }
-            });
-
-            close.addEventListener( 'click', function( ev ) {
-                ev.stopPropagation();
-                removeModalHandler();
-            });
-
-        } );
-
-    }
-
-    init();
+    modalPop();
 
 })();
     //sets up the mapbox access...
@@ -615,12 +618,12 @@ displayCountryInfo();
         (function tick(){
             if(caught == true){return};
             if (score>0){
+
             // Time left
             left = Math.floor((globalClock - (new Date())) / 1000);
             score =left;
+
             // console.log(score);
-
-
             // console.log(new Date() / 1000);
             // console.log(globalClock);
             
@@ -646,13 +649,36 @@ displayCountryInfo();
             // Number of seconds left
             s = left;
             updateDuo(6, 7, s);
+
+            if(score<86400 && day1 == false){
+
+            $("#newsHeadline").html("ONLY A DAY LEFT!");
+            $('#mugshot').hide();
+            $('#angry').show();
+            $("#article1").html("");
+            $("#article2").html("");
+            $("#closeBtn").html("Catch him quick!");
+            day1 = true;
+            modalPop();
+            };
             
             // Calling an optional user supplied callback
             options.callback(d, h, m, s);
             
             // Scheduling another call of this function in 1s
-            setTimeout(tick, 1000);}
-            else{alert("Carlos got away!"); return};
+            setTimeout(tick, 1000);
+            
+        }
+            else{            
+            $("#newsHeadline").html("CARLOS GOT AWAY!");
+            $('#mugshot').hide();
+            $('#angry').hide();
+            $('#lose').show();
+            $("#article1").hide();
+            $("#article2").hide();
+            $("#closeBtn").html("Game Over");
+            modalPop();
+             return};
             
         })();
         
@@ -1022,56 +1048,14 @@ displayCountryInfo();
             $("#newsHeadline").html("Carlos San Francisco Arrested!");
             $('#mugshot').hide();
             $('#bars').show();
-            $("#article1").html("The notorius theif Carlos San Francisco has been apprehended thanks to the diligent work of the investigative team.");
-            $("#article2").html("lorem ipsum");
+            $("#article1").html("The notorious thief Carlos San Francisco has been apprehended thanks to the diligent work of the investigative team.  He will finally face justice for the crimes he's committed.  When reached for comment, lead investigator for the ");
+            $("#article2").html(" Carlos San Francisco case Heady Bossman was quoted as saying: 'We would never have been able to catch him without the hard work our investigators and our wonderful new technology C.A.R.M.E.N.'  Thanks to you investigators, from the rest of the world!");
             $("#closeBtn").html("Well Done!");
+            modalPop();
 
 
 
-                function init() {
 
-        var overlay = document.querySelector( '.md-overlay' );
-
-        [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
-
-            var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
-                close = modal.querySelector( '.md-close' );
-
-            function removeModal( hasPerspective ) {
-                classie.remove( modal, 'md-show' );
-
-                if( hasPerspective ) {
-                    classie.remove( document.documentElement, 'md-perspective' );
-                }
-            }
-
-            function removeModalHandler() {
-                removeModal( classie.has( el, 'md-setperspective' ) ); 
-            }
-
-
-
-                classie.add( modal, 'md-show' );
-                // overlay.removeEventListener( 'click', removeModalHandler );
-                // overlay.addEventListener( 'click', removeModalHandler );
-
-                if( classie.has( el, 'md-setperspective' ) ) {
-                    setTimeout( function() {
-                        classie.add( document.documentElement, 'md-perspective' );
-                    }, 25 );
-                }
-            ;
-
-            close.addEventListener( 'click', function( ev ) {
-                ev.stopPropagation();
-                removeModalHandler();
-            });
-
-        } );
-
-    }
-
-    init();
             };
         caught = true;
         console.log("your score is: "+score)});
