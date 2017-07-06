@@ -1,5 +1,5 @@
 .jumbotron {
-    
+
     text-align: center;
     background-image: url(../images/map1.png);
     background-size: 100% 100%;
@@ -34,7 +34,7 @@ p {
     background-color: white;
     height: 260px;
     text-align: center;
-    
+
 }
 
 
@@ -140,13 +140,13 @@ h3 {
 
 .digit.static{
     box-shadow:1px 1px 1px rgba(4, 4, 4, 0.35);
-    
+
     background-image: linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
     background-image: -o-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
     background-image: -moz-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
     background-image: -webkit-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
     background-image: -ms-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
-    
+
     background-image: -webkit-gradient(
         linear,
         left bottom,
@@ -203,7 +203,7 @@ h3 {
     letter-spacing: 1px;
 }
 
-#mapid { 
+#mapid {
   height: 400px;
   width: 100%;
     margin-top: 20px;
@@ -216,7 +216,7 @@ h3 {
 
 }*/
 
-.marker:hover { 
+.marker:hover {
     color: yellow;
     z-index: 100;
     width:200px;
@@ -261,40 +261,40 @@ h5 {position: relative;
 }
 
 
-.zoom {      
--webkit-transition: all 0.35s ease-in-out;    
--moz-transition: all 0.35s ease-in-out;    
-transition: all 0.35s ease-in-out;     
-cursor: -webkit-zoom-in;      
-cursor: -moz-zoom-in;      
+.zoom {
+-webkit-transition: all 0.35s ease-in-out;
+-moz-transition: all 0.35s ease-in-out;
+transition: all 0.35s ease-in-out;
+cursor: -webkit-zoom-in;
+cursor: -moz-zoom-in;
 cursor: zoom-in;
-overflow: visible;  
-}     
-
-.zoom:hover,  
-.zoom:active,   
-.zoom:focus {
-/**adjust scale to desired size, 
-add browser prefixes**/
--ms-transform: matrix(4.5, 0, 0, 4.5, 12, 62) /*scale(2.5)*/;    
--moz-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;  
--webkit-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;  
--o-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;  
-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;    
-position:relative; 
 overflow: visible;
-z-index:  2147483647;       
+}
+
+.zoom:hover,
+.zoom:active,
+.zoom:focus {
+/**adjust scale to desired size,
+add browser prefixes**/
+-ms-transform: matrix(4.5, 0, 0, 4.5, 12, 62) /*scale(2.5)*/;
+-moz-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;
+-webkit-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;
+-o-transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;
+transform: matrix(4.5, 0, 0, 4.5, 12, 62)/*scale(2.5)*/;
+position:relative;
+overflow: visible;
+z-index:  2147483647;
 padding-right: 2px;
 padding-bottom: 2px;
 padding-top: 2px;
 }
 
 
-/**To keep upscaled images visible on mobile, 
-increase left & right margins a bit**/  
-@media only screen and (max-width: 768px) {   
-ul.gallery {      
-margin-left: 15vw;       
+/**To keep upscaled images visible on mobile,
+increase left & right margins a bit**/
+@media only screen and (max-width: 768px) {
+ul.gallery {
+margin-left: 15vw;
 margin-right: 15vw;
 }
 
@@ -446,7 +446,7 @@ span {
 }
 
 .main {
-    
+
     display: none;
 }
 
@@ -471,9 +471,9 @@ span {
 }
 
 .prevImage{
-position:absolute; 
+position:absolute;
 overflow: visible;
-z-index:  2147483647;   
+z-index:  2147483647;
 }
 
 .slideshow-container{
@@ -710,10 +710,10 @@ background-color: #F9F4EE;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transform: translateZ(600px) rotateX(20deg); 
-  -moz-transform: translateZ(600px) rotateX(20deg); 
-  -ms-transform: translateZ(600px) rotateX(20deg); 
-  transform: translateZ(600px) rotateX(20deg); 
+  -webkit-transform: translateZ(600px) rotateX(20deg);
+  -moz-transform: translateZ(600px) rotateX(20deg);
+  -ms-transform: translateZ(600px) rotateX(20deg);
+  transform: translateZ(600px) rotateX(20deg);
   opacity: 0;
 }
 
@@ -724,7 +724,7 @@ background-color: #F9F4EE;
   -webkit-transform: translateZ(0px) rotateX(0deg);
   -moz-transform: translateZ(0px) rotateX(0deg);
   -ms-transform: translateZ(0px) rotateX(0deg);
-  transform: translateZ(0px) rotateX(0deg); 
+  transform: translateZ(0px) rotateX(0deg);
   opacity: 1;
 }
 
@@ -739,10 +739,10 @@ background-color: #F9F4EE;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transform: translate(30%) translateZ(600px) rotate(10deg); 
+  -webkit-transform: translate(30%) translateZ(600px) rotate(10deg);
   -moz-transform: translate(30%) translateZ(600px) rotate(10deg);
   -ms-transform: translate(30%) translateZ(600px) rotate(10deg);
-  transform: translate(30%) translateZ(600px) rotate(10deg); 
+  transform: translate(30%) translateZ(600px) rotate(10deg);
   opacity: 0;
 }
 
@@ -910,7 +910,7 @@ background-color: #F9F4EE;
 
 .md-show.md-effect-12 ~ .md-overlay {
   background: #e74c3c;
-} 
+}
 
 .md-effect-12 .md-content h3,
 .md-effect-12 .md-content {
@@ -1069,7 +1069,7 @@ background-color: #F9F4EE;
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
   transition: transform 0.3s;
-} 
+}
 
 .md-show.md-effect-17 ~ .container,
 .md-show.md-effect-17 ~ .md-overlay  {
@@ -1190,23 +1190,23 @@ background-color: #F9F4EE;
 }
 
 @-webkit-keyframes OpenTop {
-  50% { 
-    -webkit-transform: rotateX(10deg); 
-    -webkit-animation-timing-function: ease-out; 
+  50% {
+    -webkit-transform: rotateX(10deg);
+    -webkit-animation-timing-function: ease-out;
   }
 }
 
 @-moz-keyframes OpenTop {
-  50% { 
-    -moz-transform: rotateX(10deg); 
-    -moz-animation-timing-function: ease-out; 
+  50% {
+    -moz-transform: rotateX(10deg);
+    -moz-animation-timing-function: ease-out;
   }
 }
 
 @keyframes OpenTop {
-  50% { 
-    transform: rotateX(10deg); 
-    animation-timing-function: ease-out; 
+  50% {
+    transform: rotateX(10deg);
+    animation-timing-function: ease-out;
   }
 }
 
@@ -1301,12 +1301,12 @@ body {font-family: Verdana,sans-serif;}
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
@@ -1402,20 +1402,28 @@ position: relative;
   display: none;
   position: absolute;
 z-index: 999;
-font-size: 11vw;
+font-size: 1000%;
 text-align: center;
 font-family: 'Share Tech Mono', monospace;;
 color: limegreen;
+left: 0;
+right:0;
 }
 
 #carmenOff{
   display: none;
   position: absolute;
 z-index: 999;
-font-size: 11vw;
+font-size: 1000%;
 text-align: center;
 font-family: 'Share Tech Mono', monospace;
 color: red;
+left: 0;
+right:0;
+}
+
+.carmholder{
+  text-align: center;
 }
 
 #article1, #article2{
