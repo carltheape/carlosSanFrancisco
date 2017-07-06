@@ -870,7 +870,7 @@ displayCountryInfo();
                 clueImage = imageUrl;
 
                 // creates a html tag for the image hint to be stored in clues
-                var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                
+                var imgHint = $("<img style ='max-height: 213px; max-width: 400px;' >");                
                 imgHint.attr("src", imageUrl);
                 imgHint.addClass("currentImg");
                 imgHint.addClass("img-rounded");
