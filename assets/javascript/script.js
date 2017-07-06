@@ -502,7 +502,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 
         //ties the marker click to a new data clue...
-        el.addEventListener('click', displayCountryInfo);
+        // el.addEventListener('click', displayCountryInfo);
 
         // add markers to map
         new mapboxgl.Marker(el, { offset: [-20 / 2, -20 / 2] })
@@ -585,7 +585,6 @@ var factTable = [];
           factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
           factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
           factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
-          // console.log(factTable);
 
       });
     };

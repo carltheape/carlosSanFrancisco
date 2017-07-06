@@ -18,7 +18,7 @@ $('.sound').click(function() {
     $(".button1").click(function(){
         $(".titlePage").toggleClass("main");
         $(".test1").toggleClass("test2");
-        $('.bottom').append('<a href="index.html" class="button1 btn btn-default">Collect Assignment</a>');
+        $('.bottom').append('<a href="game.html" class="button1 btn btn-default">Collect Assignment</a>');
         $(this).remove();
     });
     var slideIndex = 0;
