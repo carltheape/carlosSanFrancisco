@@ -14,6 +14,8 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
     <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js'></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic" rel="stylesheet">
 
 </head>
 
@@ -21,9 +23,17 @@
 
 <body class="title">
     <!-- Fixed navbar -->
+    <div class="jail">
+            <img id="bars" src="assets/images/jail.gif">
+    </div>
     <div class="container">
-        <div id='mapid' class="rounded"></div>
-        <div id='mymap' class="rounded"></div>
+        <div id='mapid' class="rounded">
+        <h2 id="carmenOn">C.A.R.M.E.N. ACTIVE</h2>
+        <h2 id="carmenOff">C.A.R.M.E.N. DISABLED</h2>
+        </div>
+        <div id='mymap' class="rounded">
+
+        </div>
         <div class="row container-fluid">
             <div class="col-md-4 left rounded">
                 <h3>Clues</h3>
@@ -55,18 +65,22 @@
                     <h3 id="newsHeadline">Carlos Strikes Again! This time in  </h3>
                     <div class="row">
                         <div class="col-md-4">
-                            <p id="article1">The notorius theif Carlos San Franciso has struck again!  Over the past decade the world has been plagued by this dastardly villan, no country is safe. Agencies from around the world have banded together in an effort to caputre this criminal.
+                            <p id="article1">The notorious thief Carlos San Francisco has struck again!  Over the past decade the world has been plagued by this dastardly villan, no country is safe. Agencies from around the world have banded together in an effort to caputre this criminal.
                             </p>
-                        </div>
-                        <div class="col-md-4">
-                        
-                            <img id="mugshot" src="assets/images/spy.gif">
-                            <img id="bars" src="assets/images/jail.gif">
-                            <img id="angry" src="assets/images/bossmanAngry.gif">
                             <img id="lose" src="assets/images/bossmanLose.gif">
                         </div>
                         <div class="col-md-4">
+                        
+                            <img id="headshot" src="assets/images/bossHead.jpg">
+                            
+                            <img id="win" src="assets/images/bossWin.jpg">
+
+                            <img id="angry" src="assets/images/bossmanAngry.gif">
+                            
+                        </div>
+                        <div class="col-md-4">
                             <p id="article2">According to Lead Investigator Heady Bossman, "We are hot on his trail.  He's been leaving clues everywhere he has been and we are confident that with our new investigative team we will have him in custody in short order."
+                            </p>
                         </div>
                     </div>
                     <button id="closeBtn" class="md-close btn btn-warning">Go Get Him!</button>

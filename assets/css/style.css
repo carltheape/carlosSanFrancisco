@@ -565,6 +565,7 @@ z-index:  2147483647;
   position: relative;
   border-radius: 3px;
   margin: 0 auto;
+  height: auto;
 }
 
 .md-content h3 {
@@ -1238,7 +1239,7 @@ background-color: #F9F4EE;
 
 #newsHeadline{
   color: black;
-  font-family: "Courier New", Courier, monospace;
+font-family: 'Gentium Book Basic', serif;
 }
 
 #newsBulk{
@@ -1358,25 +1359,76 @@ body {font-family: Verdana,sans-serif;}
   margin-top: 20px;
 }
 
-#mugshot{
-  height:150px;
+#headshot{
+  height:200px;
   text-align: center;
 }
 
 #bars{
   display: none;
-  height:150px;
-  text-align: center;
+  height:250px;
+  z-index: 998;
+  margin: 30px;
+  background-color: grey;
 }
 
 #angry{
   display: none;
   height:200px;
   text-align: center;
+position: relative;
+    left:0;right:0;
+    margin: auto;
 }
 
 #lose{
   display: none;
-  height:250px;
+  width: 300%;
+  text-align: center;
+position: relative;
+    left:0;right:0;
+    margin: auto;
+}
+
+#win{
+  display: none;
+  height:200px;
+  width: 100%;
+  text-align: center;
+
+}
+
+#carmenOn{
+  display: none;
+  position: absolute;
+z-index: 999;
+font-size: 11vw;
+text-align: center;
+font-family: 'Share Tech Mono', monospace;;
+color: limegreen;
+}
+
+#carmenOff{
+  display: none;
+  position: absolute;
+z-index: 999;
+font-size: 11vw;
+text-align: center;
+font-family: 'Share Tech Mono', monospace;
+color: red;
+}
+
+#article1, #article2{
+font-family: 'Gentium Book Basic', serif;
+color: black;
+font-size: 125%;
+}
+
+mark {
+    background-color: yellow;
+    color: black;
+}
+
+.jail{
   text-align: center;
 }

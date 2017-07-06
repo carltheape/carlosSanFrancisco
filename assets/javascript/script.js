@@ -314,6 +314,7 @@ $(document).ready(function() {
     var score =1;
     var caught = false;
     var day1 = false;
+    var carm = false;
 
     $('#newsHeadline').append(startingLoc.country);
     console.log(startingLoc.country);
@@ -400,6 +401,7 @@ if ( typeof define === 'function' && define.amd ) {
         center: startingLatLon, // starting position
         zoom: 0.5, // starting zoom
         // interactive: false
+        
 
 
     });
@@ -454,10 +456,10 @@ if ( typeof define === 'function' && define.amd ) {
             var compareDist = haversine(currentLatLon[1], currentLatLon[0], carlosStart.location[1], carlosStart.location[0]);
             var lastCompareDist = haversine(lastLatLon[1], lastLatLon[0], carlosStart.location[1], carlosStart.location[0]);
             if(compareDist<lastCompareDist) {
-                console.log("you are on the right track!");
+                console.log("you are on the right track!" + compareDist);
                 alternateClues();
             }else {
-                console.log("the trail is getting cold...")
+                console.log("the trail is getting cold..." + compareDist)
             };
             var isAtStart = currentLoc; //calculates the distance and time it takes to travel from one point to another...
             var end = marker.location;
@@ -513,8 +515,8 @@ if ( typeof define === 'function' && define.amd ) {
     carl.id = 'carlos';
     carl.innerHTML = " ";
     carl.style.backgroundImage = 'url(assets/images/spyfull.gif)';
-    carl.style.width = 30 + 'px';
-    carl.style.height = 30 + 'px';
+    carl.style.width = 20 + 'px';
+    carl.style.height = 20 + 'px';
     carl.style.backgroundSize = 'cover';
     carl.style.backgroundRepeat = "no-repeat";
     var plsMns = Math.round(Math.random()) * 2 - 1; //+ or Minus
@@ -653,7 +655,7 @@ displayCountryInfo();
             if(score<86400 && day1 == false){
 
             $("#newsHeadline").html("ONLY A DAY LEFT!");
-            $('#mugshot').hide();
+            $('#headshot').hide();
             $('#angry').show();
             $("#article1").html("");
             $("#article2").html("");
@@ -671,7 +673,7 @@ displayCountryInfo();
         }
             else{            
             $("#newsHeadline").html("CARLOS GOT AWAY!");
-            $('#mugshot').hide();
+            $('#headshot').hide();
             $('#angry').hide();
             $('#lose').show();
             $("#article1").hide();
@@ -990,7 +992,12 @@ displayCountryInfo();
         // console.log(map.getZoom());
         var carlos = document.getElementById("carlos");
         // console.log(carlos);
-        if (zoom >= 12) { carlos.style.display = 'block' } else { carlos.style.display = 'none' };
+        if (zoom >= 12  && carm == false){($("#carmenOn").show(),
+            $('#carmenOn').fadeOut(500),carm=true)};
+        if (zoom < 12  && carm == true){($("#carmenOff").show(),
+            $('#carmenOff').fadeOut(500),carm=false)};
+        if (zoom >= 12  &&  currentLoc == carlosStart.city) { carlos.style.display = 'block' } else { carlos.style.display = 'none' };
+        
 
 
     });
@@ -1046,10 +1053,12 @@ displayCountryInfo();
         if (globalClock>0){ 
 
             $("#newsHeadline").html("Carlos San Francisco Arrested!");
-            $('#mugshot').hide();
+            $('#headshot').hide();
+            $('#mapid').hide();
             $('#bars').show();
-            $("#article1").html("The notorious thief Carlos San Francisco has been apprehended thanks to the diligent work of the investigative team.  He will finally face justice for the crimes he's committed.  When reached for comment, lead investigator for the ");
-            $("#article2").html(" Carlos San Francisco case Heady Bossman was quoted as saying: 'We would never have been able to catch him without the hard work our investigators and our wonderful new technology C.A.R.M.E.N.'  Thanks to you investigators, from the rest of the world!");
+            $('#win').show();
+            $("#article1").html("The notorious thief Carlos San Francisco has been apprehended thanks to the diligent work of the investigative team.  He will finally face justice for the crimes he's committed.  When reached for comment, lead investigator for the... ");
+            $("#article2").html(' Carlos San Francisco case Heady Bossman was quoted as saying: "We would never have been able to catch him without the hard work our investigators and our wonderful new technology C.A.R.M.E.N."  Thanks to you investigators, from the rest of the world!');
             $("#closeBtn").html("Well Done!");
             modalPop();
 
@@ -1123,6 +1132,7 @@ displayCountryInfo();
 
     //this is the chunk of code that will animate the plane from one location to another...
     (function($) {
+        map.interactive = false;
         $.fn.animate_from_to = function(targetElm, options) {
             return this.each(function() {
                 animate_from_to(this, targetElm, options);
