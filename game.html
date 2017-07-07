@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 
 </head>
 
@@ -101,6 +102,55 @@
     </div>
     <!-- /container -->
     <script type="text/javascript" src="assets/javascript/script.js"></script>
+
+
+            <div class="container">
+        <!--img class="titlePage" src="assets/images/titlepage.jpg"-->
+
+        <!--Top Ten Scores-->
+        <div class="panel panel-prmary">
+            <div class="panel-heading">
+                <h5 class="panel-title"><strong>Fastest times</strong></h5>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover" id='score-table'>
+                    <thread>
+                        <tr>
+                            <th>Name</th>
+                            <th>Time</th>
+                        </tr>
+                    </thread>
+                    <tbody id="scoreStuff"></tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <form id="addUser"> -->
+            <div class="form-group">
+                <label for="name-input">Name:</label>
+                <input class="form-control" id="name-input" type="text">
+            </div>
+
+<!--             <div class="form-group">
+                <label for="score-input">High Score:</label>
+                <input class="form-control" id="score-input" type="number">
+            </div> -->
+
+        <button class="btn btn-default" id="logScore">Submit</button>
+                <!-- </form> -->
+
+<!--                 <div class="col-md-12 text-center">
+                    <a class="btn btn-default" href="load2.html" role="button">Play Game</a>
+                    <button class="btn btn-primary sound">Toggle Sound</button>
+                </div>
+ -->
+            </div>
+
+        </div>
+<!--         <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>High Score</h4>             
+            </div>
+        </div> -->
 </body>
 
 </html>
