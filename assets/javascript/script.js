@@ -502,7 +502,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 
         //ties the marker click to a new data clue...
-        // el.addEventListener('click', displayCountryInfo);
+        el.addEventListener('click', displayCountryInfo);
 
         // add markers to map
         new mapboxgl.Marker(el, { offset: [-20 / 2, -20 / 2] })
@@ -585,6 +585,7 @@ var factTable = [];
           factTable.push("The average fertility rate for this country is: " + obj["People and Society"]["Total fertility rate"].text);
           factTable.push("The total number of paved airports for this country are: " + obj.Transportation["Airports - with paved runways"].total.text);
           factTable.push("The total distance of roads in this country is: " + obj.Transportation.Roadways.total.text);
+          // console.log(factTable);
 
       });
     };
@@ -769,7 +770,7 @@ displayCountryInfo();
         if ((new Date()) > ts) {
             // The new year is here! Count towards something else.
             // Notice the *1000 at the end - time must be in milliseconds
-            ts = (new Date()).getTime() + 7 * 24 * 60 * 60 * 1000;
+            ts = (new Date()).getTime() + 3 * 24 * 60 * 60 * 1000;
             globalClock = ts;
 
         }
@@ -870,7 +871,7 @@ displayCountryInfo();
                 clueImage = imageUrl;
 
                 // creates a html tag for the image hint to be stored in clues
-                var imgHint = $("<img style ='max-height: 213px; max-width: 400px;' >");                
+                var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                
                 imgHint.attr("src", imageUrl);
                 imgHint.addClass("currentImg");
                 imgHint.addClass("img-rounded");
@@ -1060,8 +1061,6 @@ displayCountryInfo();
             $("#article2").html(' Carlos San Francisco case Heady Bossman was quoted as saying: "We would never have been able to catch him without the hard work our investigators and our wonderful new technology C.A.R.M.E.N."  Thanks to you investigators, from the rest of the world!');
             $("#closeBtn").html("Well Done!");
             modalPop();
-
-            createHSButton();
 
 
 
@@ -1267,12 +1266,6 @@ displayCountryInfo();
 
 
     });
-
-    function createHSButton() {
-
-        var highScore = $("<a class='btn btn-default' href='scorePage.html'>High Score</a>");
-        $(".buttonsNew").append(highScore);
-    };
 
 
 }); //document ready brackets
