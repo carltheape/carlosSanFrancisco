@@ -870,7 +870,7 @@ displayCountryInfo();
                 clueImage = imageUrl;
 
                 // creates a html tag for the image hint to be stored in clues
-                var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                
+                var imgHint = $("<img style ='max-height: 213px; max-width: 400px;' >");                
                 imgHint.attr("src", imageUrl);
                 imgHint.addClass("currentImg");
                 imgHint.addClass("img-rounded");
@@ -1060,6 +1060,8 @@ displayCountryInfo();
             $("#article2").html(' Carlos San Francisco case Heady Bossman was quoted as saying: "We would never have been able to catch him without the hard work our investigators and our wonderful new technology C.A.R.M.E.N."  Thanks to you investigators, from the rest of the world!');
             $("#closeBtn").html("Well Done!");
             modalPop();
+
+            createHSButton();
 
 
 
@@ -1266,6 +1268,7 @@ displayCountryInfo();
 
     });
 
+<<<<<<< HEAD
     // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAnDIrxPck-uh7JhwatLgC8HbMK5xQ2en4",
@@ -1333,6 +1336,13 @@ displayCountryInfo();
   });
 
 
+=======
+    function createHSButton() {
+
+        var highScore = $("<a class='btn btn-default' href='scorePage.html'>High Score</a>");
+        $(".buttonsNew").append(highScore);
+    };
+>>>>>>> 2373270573e795063bab1d13b697c27090bfa3cc
 
 
 }); //document ready brackets
