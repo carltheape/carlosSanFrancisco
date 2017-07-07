@@ -52,7 +52,7 @@ $(document).ready(function() {
             }
 
             function removeModalHandler() {
-                removeModal( classie.has( el, 'md-setperspective' ) ); 
+                removeModal( classie.has( el, 'md-setperspective' ) );
             }
 
 
@@ -401,7 +401,7 @@ if ( typeof define === 'function' && define.amd ) {
         center: startingLatLon, // starting position
         zoom: 0.5, // starting zoom
         // interactive: false
-        
+
 
 
     });
@@ -595,27 +595,27 @@ var factTable = [];
 displayCountryInfo();
 
     (function($){
-    
+
     // Number of seconds in every time division
     var days    = 24*60*60,
         hours    = 60*60,
         minutes    = 60;
-    
+
     // Creating the plugin
     $.fn.countdown = function(prop){
-        
+
         var options = $.extend({
             callback    : function(){},
             timestamp    : 0
         },prop);
-        
+
         var left, d, h, m, s, positions;
 
         // Initialize the plugin
         init(this, options);
-        
+
         positions = this.find('.position');
-        
+
         (function tick(){
             if(caught == true){return};
             if (score>0){
@@ -627,26 +627,26 @@ displayCountryInfo();
             // console.log(score);
             // console.log(new Date() / 1000);
             // console.log(globalClock);
-            
+
             if(left < 0){
                 left = 0;
             }
-            
+
             // Number of days left
             d = Math.floor(left / days);
             updateDuo(0, 1, d);
             left -= d*days;
-            
+
             // Number of hours left
             h = Math.floor(left / hours);
             updateDuo(2, 3, h);
             left -= h*hours;
-            
+
             // Number of minutes left
             m = Math.floor(left / minutes);
             updateDuo(4, 5, m);
             left -= m*minutes;
-            
+
             // Number of seconds left
             s = left;
             updateDuo(6, 7, s);
@@ -662,15 +662,15 @@ displayCountryInfo();
             day1 = true;
             modalPop();
             };
-            
+
             // Calling an optional user supplied callback
             options.callback(d, h, m, s);
-            
+
             // Scheduling another call of this function in 1s
             setTimeout(tick, 1000);
-            
+
         }
-            else{            
+            else{
             $("#newsHeadline").html("CARLOS GOT AWAY!");
             $('#headshot').hide();
             $('#angry').hide();
@@ -680,19 +680,19 @@ displayCountryInfo();
             $("#closeBtn").html("Game Over");
             modalPop();
              return};
-            
+
         })();
-        
+
         // This function updates two digit positions at once
         function updateDuo(minor,major,value){
             switchDigit(positions.eq(minor),Math.floor(value/10)%10);
             switchDigit(positions.eq(major),value%10);
         }
-        
+
         return this;
     };
 
-    
+
 
 
     function init(elem, options){
@@ -708,7 +708,7 @@ displayCountryInfo();
                     <span class="digit static">0</span>\
                 </span>'
             ).appendTo(elem);
-            
+
             if(this!="Seconds"){
                 elem.append('<span class="countDiv countDiv'+i+'"></span>');
             }
@@ -718,20 +718,20 @@ displayCountryInfo();
 
     // Creates an animated transition between the two numbers
     function switchDigit(position,number){
-        
+
         var digit = position.find('.digit')
-        
+
         if(digit.is(':animated')){
             return false;
         }
-        
+
         if(position.data('digit') == number){
             // We are already showing this number
             return false;
         }
-        
+
         position.data('digit', number);
-        
+
         var replacement = $('<span>',{
             'class':'digit',
             css:{
@@ -740,10 +740,10 @@ displayCountryInfo();
             },
             html:number
         });
-        
+
         // The .static class is added when the animation
         // completes. This makes it run smoother.
-        
+
         digit
             .before(replacement)
             .removeClass('static')
@@ -863,14 +863,14 @@ displayCountryInfo();
                 console.log("secret " + secret);
                 console.log("photoID " + photoId);
 
-              
+
                 //construct the url for the image
                 var imageUrl = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + photoId + "_" + secret + ".jpg";
                 console.log("initial" + imageUrl);
                 clueImage = imageUrl;
 
                 // creates a html tag for the image hint to be stored in clues
-                var imgHint = $("<img style ='max-height: 213px; max-width: 400px;' >");                
+                var imgHint = $("<img style ='max-height: 213px; max-width: 400px;' >");
                 imgHint.attr("src", imageUrl);
                 imgHint.addClass("currentImg");
                 imgHint.addClass("img-rounded");
@@ -884,7 +884,7 @@ displayCountryInfo();
                 console.log("Clues :" + clueCount);
             }
 
-            
+
         });
 
     };
@@ -900,7 +900,7 @@ displayCountryInfo();
         var coordinates = "&lat=" + lat + "&lon=" + long;
         console.log("coordinates : " + coordinates);
         //query url
-        var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + coordinates + format;    
+        var queryUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + key + coordinates + format;
         moveFact();
 
          $.ajax({
@@ -934,7 +934,7 @@ displayCountryInfo();
                 clueImage = imageUrl;
 
                 // creates a html tag for the image hint to be stored in clues
-                var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");                
+                var imgHint = $("<img style ='max-height: 180px; max-width: 250px;' >");
                 imgHint.attr("src", imageUrl);
                 imgHint.addClass("currentImg");
                 imgHint.addClass("img-rounded");
@@ -944,7 +944,7 @@ displayCountryInfo();
     };
 
 
-   
+
     //stores prev source to avoid duplicated prev clues
     var prevSrc = "";
 
@@ -982,7 +982,7 @@ displayCountryInfo();
 
     /////////////////////////////////////////////////////////////////
     //////////////END FLICR API CALLS/Displaying Clues///////////////
-    /////////////////////////////////////////////////////////////////    
+    /////////////////////////////////////////////////////////////////
 
     //this is the code that make carlos appear, only if you are close enough to see him...
     map.on('zoom', function(e) {
@@ -996,7 +996,7 @@ displayCountryInfo();
         if (zoom < 12  && carm == true){($("#carmenOff").show(),
             $('#carmenOff').fadeOut(500),carm=false)};
         if (zoom >= 12  &&  currentLoc == carlosStart.city) { carlos.style.display = 'block' } else { carlos.style.display = 'none' };
-        
+
 
 
     });
@@ -1049,7 +1049,7 @@ displayCountryInfo();
     //the code that will make you win...
 
     $("#carlos").on("click", function() {
-        if (globalClock>0){ 
+        if (globalClock>0){
 
             $("#newsHeadline").html("Carlos San Francisco Arrested!");
             $('#headshot').hide();
@@ -1071,7 +1071,7 @@ displayCountryInfo();
         console.log("your score is: "+score)});
             // }
             // else{alert("you missed him!")}
-    
+
 
       $(".prevImg").hover(function() {
   //   $('#right').css({'overflow':'visible'});
@@ -1110,7 +1110,7 @@ displayCountryInfo();
             factAnchor.attr("data-toggle", "collapse");
             collapseP.attr("id", factId);
             collapseP.addClass("collapse");
-            collapseP.append(prevTextHint);             
+            collapseP.append(prevTextHint);
             $("#textClue").append(factAnchor);
             $("#textClue").append(collapseP);
             factNum++;
@@ -1120,7 +1120,7 @@ displayCountryInfo();
 // $(".fact").click(function(){
 //         getFact();
 //         moveFact();
-//     }); 
+//     });
     /*
      * jQuery Animate From To plugin 1.0
      *
@@ -1245,7 +1245,7 @@ displayCountryInfo();
                 'image': 'assets/images/plane.png',
             },
         });
-        //this finds the degree difference between two points and rotates the plane accordingly...             
+        //this finds the degree difference between two points and rotates the plane accordingly...
         var currentXY = $('.' + currentLoc).position();
         var lastXY = $('.' + lastLoc).position();
         var p1 = {
@@ -1268,7 +1268,7 @@ displayCountryInfo();
 
     });
 
-<<<<<<< HEAD
+
     // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAnDIrxPck-uh7JhwatLgC8HbMK5xQ2en4",
@@ -1336,13 +1336,13 @@ displayCountryInfo();
   });
 
 
-=======
+
     function createHSButton() {
 
         var highScore = $("<a class='btn btn-default' href='scorePage.html'>High Score</a>");
         $(".buttonsNew").append(highScore);
     };
->>>>>>> 2373270573e795063bab1d13b697c27090bfa3cc
+
 
 
 }); //document ready brackets
