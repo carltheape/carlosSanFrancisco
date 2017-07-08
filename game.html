@@ -24,7 +24,7 @@
     <!-- Fixed navbar -->
     <div id="jail">
         <img id="bars" src="assets/images/jail.gif">
-         <img id="fetti" src="assets/images/fetti.gif">
+        <img id="fetti" src="assets/images/fetti.gif">
     </div>
     <div class="container">
         <div id='mapid' class="rounded">
@@ -41,79 +41,87 @@
             </div>
             <div class="col-md-4 middle rounded">
                 <div id="timer">
-                    <p id="note"></p>
+                    <!--                     <p id="note"></p>
+ -->
+                </div>
+                <div class="row">
+                    <div class="days">
+                        <h2 class="d">Days</h2>
+                        <h2 class="h">Hours</h2>
+                        <h2 class="m">Minutes</h2>
+                        <h2 class="s">Seconds</h2>
+                    </div>
+                </div>
+                <div class="buttonsNew row">
+                    <button class="btn btn-primary sound">Toggle Sound</button>
+                    <a class="btn btn-default" href="index.html" role="button">New Game</a>
                 </div>
             </div>
             <div id="right" class="col-md-4 right rounded">
-                <!--                 <h3>Previous Clues</h3>
+                    <!--                 <h3>Previous Clues</h3>
  -->
-                <br>
-                <div class="insideRight">
-                    <div id="textClue" class="col-md-6">
-                        <h4>Text Clues</h4>
-                    </div>
-                    <div id="imgClue" class="col-md-6">
-                        <h4>Images Clues</h4>
+                    <br>
+                    <div class="insideRight">
+                        <div id="textClue" class="col-md-6">
+                            <h4>Text Clues</h4>
+                        </div>
+                        <div id="imgClue" class="col-md-6">
+                            <h4>Images Clues</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id="highScore" class="panel panel-prmary">
-            <div class="panel-body">
-                <table class="table table-hover" id='score-table'>
-                    <thread>
-                        <span id="scoreTitle">High Scores</span>
-                    </thread>
-                    <tbody id="scoreStuff"></tbody>
-                </table>
-            </div>
-            <div id="formSubmit" class="form-group">
-                <label for="name-input">Name:</label>
-                <input class="form-control" id="name-input" type="text" placeholder="Your Name Here">
-                <br>
-                <button class="btn btn-default" id="logScore">Did you make it in the top 10?</button>
-            </div>
-        </div>
-        <div class="md-modal md-effect-4" id="modal-4">
-            <div class="md-content">
-                <h3 id="newsHeadline">Carlos Strikes Again! This time in  </h3>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p id="article1">The notorious thief Carlos San Francisco has struck again! Over the past decade the world has been plagued by this dastardly villan, no country is safe. Agencies from around the world have banded together in an effort to caputre this criminal.
-                        </p>
-                        <img id="lose" src="assets/images/bossmanLose.gif">
-                    </div>
-                    <div class="col-md-4">
-                        <img id="headshot" src="assets/images/bossHead.jpg">
-                        <img id="win" src="assets/images/bossWin.jpg">
-                        <img id="angry" src="assets/images/bossmanAngry.gif">
-                    </div>
-                    <div class="col-md-4">
-                        <p id="article2">According to Lead Investigator Heady Bossman, "We are hot on his trail. He's been leaving clues everywhere he has been and we are confident that with our new investigative team we will have him in custody in short order."
-                        </p>
-                    </div>
+            <div id="highScore" class="panel panel-prmary">
+                <div class="panel-body">
+                    <table class="table table-hover" id='score-table'>
+                        <thread>
+                            <span id="scoreTitle">High Scores</span>
+                        </thread>
+                        <tbody id="scoreStuff"></tbody>
+                    </table>
                 </div>
-                <button id="closeBtn" class="md-close btn btn-warning">Go Get Him!</button>
-                <br>
-                <!--                 ///////////////////////////
- -->
-                <!--img class="titlePage" src="assets/images/titlepage.jpg"-->
-                <!--Top Ten Scores-->
-                <!-- <form id="addUser"> -->
-                <!--         ////////////////////////////// -->
+                <div id="formSubmit" class="form-group">
+                    <label for="name-input">Name:</label>
+                    <input class="form-control" id="name-input" type="text" placeholder="Your Name Here">
+                    <br>
+                    <button class="btn btn-default" id="logScore">Did you make it in the top 10?</button>
+                </div>
             </div>
-        </div>
-        <button class="md-trigger" data-modal="modal-4">Newspaper</button>
-        <!-- the buttons below were used during testing of clues. No longer need -->
-        <!--  <button class="btn search" data-name="Atlanta">Atlanta</button>
+            <div class="md-modal md-effect-4" id="modal-4">
+                <div class="md-content">
+                    <h3 id="newsHeadline">Carlos Strikes Again! This time in  </h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p id="article1">The notorious thief Carlos San Francisco has struck again! Over the past decade the world has been plagued by this dastardly villan, no country is safe. Agencies from around the world have banded together in an effort to caputre this criminal.
+                            </p>
+                            <img id="lose" src="assets/images/bossmanLose.gif">
+                        </div>
+                        <div class="col-md-4">
+                            <img id="headshot" src="assets/images/bossHead.jpg">
+                            <img id="win" src="assets/images/bossWin.jpg">
+                            <img id="angry" src="assets/images/bossmanAngry.gif">
+                        </div>
+                        <div class="col-md-4">
+                            <p id="article2">According to Lead Investigator Heady Bossman, "We are hot on his trail. He's been leaving clues everywhere he has been and we are confident that with our new investigative team we will have him in custody in short order."
+                            </p>
+                        </div>
+                    </div>
+                    <button id="closeBtn" class="md-close btn btn-warning">Go Get Him!</button>
+                    <br>
+                    <!--                 ///////////////////////////
+ -->
+                    <!--img class="titlePage" src="assets/images/titlepage.jpg"-->
+                    <!--Top Ten Scores-->
+                    <!-- <form id="addUser"> -->
+                    <!--         ////////////////////////////// -->
+                </div>
+            </div>
+            <button class="md-trigger" data-modal="modal-4">Newspaper</button>
+            <!-- the buttons below were used during testing of clues. No longer need -->
+            <!--  <button class="btn search" data-name="Atlanta">Atlanta</button>
             <button class="btn search" data-name="Japan">Japan</button>
             <button class="btn search" data-name="Alaska">Alaska</button> -->
-        <!-- <button class="btn fact" data-name="fact">fact tester</button> -->
-        <div class="buttonsNew row">
-            <button class="btn btn-primary sound">Toggle Sound</button>
-            <a class="btn btn-default" href="index.html" role="button">New Game</a>
+            <!-- <button class="btn fact" data-name="fact">fact tester</button> -->
         </div>
-    </div>
     </div>
     <!-- /container -->
     <script type="text/javascript" src="assets/javascript/script.js"></script>
