@@ -1098,6 +1098,7 @@ $(document).ready(function() {
 
     //this is the code that make carlos appear, only if you are close enough to see him...
     map.on('zoom', function(e) {
+        var carlos = document.getElementById("carlos");
 
         var zoom = parseInt(map.getZoom());
         if (zoom >= 12 && carm == false) {
@@ -1106,7 +1107,7 @@ $(document).ready(function() {
         };
 
         if(zoom >= 12){
-            var carlos = document.getElementById("carlos");
+
             // var height = parseFloat(carl.style.height);
             // var width = parseFloat(carl.style.width);
             console.log("zoom: "+zoom);
