@@ -290,6 +290,118 @@ $(document).ready(function() {
         continent:"south-america",
         code:"pe"
 
+    }, {
+        city: "Christchurch",
+        country: "New Zealand",
+        location: [172.636225, -43.532054],
+        continent:"australia-oceania",
+        code:"nz"
+
+    }, {
+        city: "Faisalabad",
+        country: "Pakistan",
+        location: [73.079107, 31.418714],
+        continent:"south-asia",
+        code:"pk"
+
+    }, {
+        city: "Riyadh",
+        country: "Saudi Arabia",
+        location: [46.675296, 24.713552],
+        continent:"middle-east",
+        code:"sa"
+
+    }, {
+        city: "Singapore",
+        country: "Singapore",
+        location: [103.819836, 1.352083],
+        continent:"east-n-southeast-asia",
+        code:"sn"
+
+    }, {
+        city: "Yangon",
+        country: "Myanmar",
+        location: [96.195132, 16.866069],
+        continent:"east-n-southeast-asia",
+        code:"bm"
+
+    }, {
+        city: "Abidjan",
+        country: "Ivory Coast",
+        location: [-4.008256, 5.359952],
+        continent:"africa",
+        code:"iv"
+
+    }, {
+        city: "Dar es Salaam",
+        country: "Tanzania",
+        location: [39.208328, -6.792354],
+        continent:"africa",
+        code:"tz"
+
+    }, {
+        city: "New Taipei City",
+        country: "Taiwan",
+        location: [121.462787, 25.016983],
+        continent:"east-n-southeast-asia",
+        code:"tw"
+
+    }, {
+        city: "Los Angeles",
+        country: "United States of America",
+        location: [-118.243685, 34.052234],
+        continent:"north-america",
+        code:"us"
+
+    }, {
+        city: "Busan",
+        country: "South Korea",
+        location: [129.075642, 35.179554],
+        continent:"east-n-southeast-asia",
+        code:"ks"
+
+    }, {
+        city: "Kabul",
+        country: "Afghanistan",
+        location: [69.207486, 34.555349],
+        continent:"south-asia",
+        code:"af"
+
+    }, {
+        city: "Casablanca",
+        country: "Morocco",
+        location: [-7.589843, 33.573110],
+        continent:"africa",
+        code:"mo"
+
+    }, {
+        city: "Pyongyang",
+        country: "North Korea",
+        location: [125.762524, 39.039219],
+        continent:"east-n-southeast-asia",
+        code:"kn"
+
+    }, {
+        city: "Nairobi",
+        country: "Kenya",
+        location: [36.821946, -1.292066],
+        continent:"africa",
+        code:"ke"
+
+    }, {
+        city: "Addis Ababa",
+        country: "Ethiopia",
+        location: [38.757761, 8.980603],
+        continent:"africa",
+        code:"et"
+
+    }, {
+        city: "Zhongshan",
+        country: "China",
+        location: [113.392770, 22.517585],
+        continent:"east-n-southeast-asia",
+        code:"ch"
+
     }];
 
     //sets up the travel variables...
@@ -1090,7 +1202,8 @@ displayCountryInfo();
     var factNum = 1;
     //displays the current fact in the Clue box
     function getFact(){
-        var fact = factTable[Math.floor(Math.random() * places.length)]
+        var fact = factTable[Math.floor(Math.random() * places.length)];
+        if (fact==null){getFact()};
         console.log(fact);
         var i=factTable.indexOf(fact);
         factTable.splice(fact,1);
@@ -1328,11 +1441,11 @@ displayCountryInfo();
 
     });
     //Clears all of the text-boxes
-    $("#name-input").val(""),
+    $("#name-input").val("");
     // $("#score-input").val(""),
     // displayHighScore();
     //alert
-    alert ("Your name has been logged");
+    // alert ("Your name has been logged");
 
   });
 
