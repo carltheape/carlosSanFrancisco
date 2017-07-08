@@ -1456,6 +1456,9 @@ mark {
 
 #highScore, th{
   text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #B30101;
+    color: limegreen;
 }
 
 #scoreTitle{
@@ -1465,5 +1468,6 @@ mark {
 
 #scoreStuff{
   font-weight: normal;
-  font-size: 100%
+  font-size: 100%;
+
 }
