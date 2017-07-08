@@ -1058,10 +1058,10 @@ displayCountryInfo();
             $('#win').show();
             $("#article1").html("The notorious thief Carlos San Francisco has been apprehended thanks to the diligent work of the investigative team.  He will finally face justice for the crimes he's committed.  When reached for comment, lead investigator for the... ");
             $("#article2").html(' Carlos San Francisco case Heady Bossman was quoted as saying: "We would never have been able to catch him without the hard work our investigators and our wonderful new technology C.A.R.M.E.N."  Thanks to you investigators, from the rest of the world!');
-            $("#closeBtn").html("Well Done!");
+            $("#closeBtn").html("Great Job!");
+            $('#clueHolder').hide();
+            $('#highScore').show();
             modalPop();
-
-            createHSButton();
 
 
 
@@ -1071,6 +1071,7 @@ displayCountryInfo();
         console.log("your score is: "+score)});
             // }
             // else{alert("you missed him!")}
+
 
 
       $(".prevImg").hover(function() {
@@ -1311,7 +1312,7 @@ displayCountryInfo();
   // Capture Button Click
   $("#logScore").on('click', function(e) {
     e.preventDefault();
-
+    $("#formSubmit").hide();
     name = $("#name-input").val().trim();
 
     console.log(score);
@@ -1340,7 +1341,7 @@ displayCountryInfo();
     function createHSButton() {
 
         var highScore = $("<a class='btn btn-default' href='scorePage.html'>High Score</a>");
-        $(".buttonsNew").append(highScore);
+        $("#modal-4").append(highScore);
     };
 
 

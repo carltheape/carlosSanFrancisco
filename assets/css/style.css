@@ -1440,3 +1440,30 @@ mark {
 .jail{
   text-align: center;
 }
+
+#highScore{
+  display: none;
+}
+
+
+#submitBtn{
+  display: none;
+}
+
+#closeWin{
+  display: none;
+}
+
+#highScore, th{
+  text-align: center;
+}
+
+#scoreTitle{
+  font-weight: bolder;
+  font-size: 250%;
+}
+
+#scoreStuff{
+  font-weight: normal;
+  font-size: 100%
+}
