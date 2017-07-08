@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Project 1</title>
+    <title>Carlos San Francisco</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -22,8 +22,9 @@
 
 <body class="title">
     <!-- Fixed navbar -->
-    <div class="jail">
+    <div id="jail">
         <img id="bars" src="assets/images/jail.gif">
+         <img id="fetti" src="assets/images/fetti.gif">
     </div>
     <div class="container">
         <div id='mapid' class="rounded">
@@ -44,9 +45,10 @@
                 </div>
             </div>
             <div id="right" class="col-md-4 right rounded">
-<!--                 <h3>Previous Clues</h3>
- -->                <br>
-                    <div class="insideRight">
+                <!--                 <h3>Previous Clues</h3>
+ -->
+                <br>
+                <div class="insideRight">
                     <div id="textClue" class="col-md-6">
                         <h4>Text Clues</h4>
                     </div>
@@ -55,24 +57,23 @@
                     </div>
                 </div>
             </div>
-
         </div>
-<div id="highScore" class="panel panel-prmary">
-                                        <div class="panel-body">
-                        <table class="table table-hover" id='score-table'>
-                            <thread>
-                                <span id="scoreTitle">High Scores</span>
-                            </thread>
-                            <tbody id="scoreStuff"></tbody>
-                        </table>
-                    </div>
-                                        <div id="formSubmit" class="form-group">
-                        <label for="name-input">Name:</label>
-                        <input class="form-control" id="name-input" type="text">
-                        <br>
-                        <button class="btn btn-default" id="logScore">Did you make it in the top 10?</button>
-                    </div>
-                </div>
+        <div id="highScore" class="panel panel-prmary">
+            <div class="panel-body">
+                <table class="table table-hover" id='score-table'>
+                    <thread>
+                        <span id="scoreTitle">High Scores</span>
+                    </thread>
+                    <tbody id="scoreStuff"></tbody>
+                </table>
+            </div>
+            <div id="formSubmit" class="form-group">
+                <label for="name-input">Name:</label>
+                <input class="form-control" id="name-input" type="text" placeholder="Your Name Here">
+                <br>
+                <button class="btn btn-default" id="logScore">Did you make it in the top 10?</button>
+            </div>
+        </div>
         <div class="md-modal md-effect-4" id="modal-4">
             <div class="md-content">
                 <h3 id="newsHeadline">Carlos Strikes Again! This time in  </h3>
@@ -99,7 +100,6 @@
                 <!--img class="titlePage" src="assets/images/titlepage.jpg"-->
                 <!--Top Ten Scores-->
                 <!-- <form id="addUser"> -->
-                
                 <!--         ////////////////////////////// -->
             </div>
         </div>
