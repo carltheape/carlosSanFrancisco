@@ -1392,7 +1392,7 @@ body {font-family: Verdana,sans-serif;}
   z-index: 100000;
   left: 0;
   right: 0;
-  pointer-events: none;
+  pointer-events: none
 }
 
 #angry{
@@ -1524,8 +1524,8 @@ mark {
 
 }
 
-#carlos {
+/*#carlos {
     display: none;
-}
+}*/
 
 
